@@ -22,6 +22,10 @@ public class Main {
 		black.shooting(blue);
 		yellow.shooting(red);
 		yellow.shooting(blue);
+		Level1 lvl1 = new Level1();
+		lvl1.setVisible(true);
+		lvl1.setLocationRelativeTo(null);
+		
 		
 	}
 
