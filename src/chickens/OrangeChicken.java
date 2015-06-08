@@ -5,29 +5,29 @@ import shots.BlueShot;
 import shots.RedShot;
 import shots.YellowShot;
 
-public class RedChicken extends Chicken {
+public class OrangeChicken extends Chicken {
 
 	@Override
 	public void visit(RedShot shot) {
-		System.out.println("Red shot red chicken");
+		System.out.println("Red shot orange chicken");
 		
 	}
 
 	@Override
 	public void visit(BlackShot shot) {
-		System.out.println("black shot red chicken");
+		System.out.println("black shot orange chicken");
 		
 	}
 
 	@Override
 	public void visit(BlueShot blueShot) {
-		System.out.println("blue shot red chicken");
+		System.out.println("blue shot orange chicken");
 		
 	}
 
 	@Override
 	public void visit(YellowShot yellowShot) {
-		System.out.println("yellow shot red chicken");
+		System.out.println("yellow shot orange chicken");
 		
 	}
 }

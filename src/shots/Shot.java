@@ -1,4 +1,4 @@
-package chickenSoup;
+package shots;
 
 import chickens.Visitor;
 

@@ -1,5 +1,8 @@
 package chickenSoup;
 
+import shots.BlackShot;
+import shots.Shot;
+import shots.YellowShot;
 import chickens.BlueChicken;
 import chickens.Chicken;
 import chickens.RedChicken;
@@ -13,12 +16,12 @@ public class Main {
 		Chicken blue = new BlueChicken();
 		
 		Shot black = new BlackShot();
-		Shot red2 = new RedShot();
+		Shot yellow = new YellowShot();
 		
 		black.shooting(red);
 		black.shooting(blue);
-		red2.shooting(red);
-		red2.shooting(blue);
+		yellow.shooting(red);
+		yellow.shooting(blue);
 		
 	}
 
