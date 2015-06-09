@@ -13,7 +13,6 @@ import shots.YellowShot;
 public class BlueChicken extends Chicken {
 
 	private String color;
-	private JButton button;
 
 	public BlueChicken(Cord cord, ChickenMatrix chickens) {
 		super(cord, chickens);

@@ -13,12 +13,11 @@ import shots.YellowShot;
 public class GreenChicken extends Chicken {
 	
 	private String color;
-	private JButton button;
 
 	public GreenChicken(Cord cord, ChickenMatrix chickens) {
 		super(cord, chickens);
 		this.color = "green";
-		button.setIcon(new ImageIcon("green.png"));
+		this.button.setIcon(new ImageIcon("green.png"));
 	}
 
 	@Override

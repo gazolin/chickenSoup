@@ -16,7 +16,7 @@ public class RedChicken extends Chicken {
 	public RedChicken(Cord cord, ChickenMatrix chickens) {
 		super(cord, chickens);
 		
-		this.color = "purple";
+		this.color = "red";
 		button.setIcon(new ImageIcon("red.png"));
 	}
 

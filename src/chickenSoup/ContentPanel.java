@@ -10,8 +10,6 @@ public class ContentPanel extends JPanel{
 	  private Image img;
 	  private ChickenMatrix chickens;
 	  
-	
-
 	  public ContentPanel(Image img, ChickenMatrix chickens) {
 	    this.img = img;
 	    this.chickens = chickens;

@@ -5,7 +5,14 @@ import java.awt.GridLayout;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
+import chickens.BlueChicken;
+import chickens.Chicken;
+import chickens.OrangeChicken;
+import chickens.RedChicken;
+import chickens.YellowChicken;
 
 public class ChickenMatrix extends JPanel  {
 	
@@ -14,6 +21,9 @@ public class ChickenMatrix extends JPanel  {
 	public ChickenMatrix () {
 		setLayout(new GridLayout(4, 8));
 		setOpaque(false);
+		
+		int[][] level1 = {{1, 2, 3, 1, 1, 3, 2, 1}, {3, 1, 2, 2, 2, 2, 1, 3},
+				{2, 3, 1, 3, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
 		
 		Chicken chicken;
 		Cord cord;
@@ -25,9 +35,9 @@ public class ChickenMatrix extends JPanel  {
 			row = new HashMap<Integer, Chicken>();	
 			for (int j = 0; j < 8; j++) {
 				cord = new Cord(i, j);
-				chicken = new Chicken(cord, this);   			
+				chicken = createTheChiken(level1[i][j], cord);		
 				row.put(j, chicken);
-				add(chicken.getButton());
+				add(chicken.getButton());		//what is it? what is add?
 			}
 			allChickens.put(i,row);
 		}
@@ -35,7 +45,26 @@ public class ChickenMatrix extends JPanel  {
 		initLevel(1);
 	}
 	
-	private void initLevel(int num){
+	public Chicken createTheChiken (int color, Cord cord) {
+		Chicken chicken = null;
+		switch(color) {
+			case 1:
+				chicken = new RedChicken(cord, this);
+				break;
+			case 2:
+				chicken = new BlueChicken(cord, this);
+				break;
+			case 3:
+				chicken = new YellowChicken(cord, this);
+				break;
+			case 4:
+				chicken = new OrangeChicken(cord, this);
+				break;
+		}
+		return chicken;
+	}
+	
+	private void initLevel(int num) {
 		switch (num){
 		case 1:
 			initLeve1();
@@ -64,11 +93,13 @@ public class ChickenMatrix extends JPanel  {
 				{2, 3, 1, 3, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
 		Cord curCord = new Cord(0,0);
 		
-		for(int i=0; i<4; i++){
-			for(int j=0; j<8; j++){
+		for(int i = 0; i < 4; i++) {
+			for(int j = 0; j < 8; j++) {
+				
+				
+				
 				getChickenByCord(new Cord(i,j)).setIconByColor(color[i][j]);
 			}
-
 		}
 		
 	}
