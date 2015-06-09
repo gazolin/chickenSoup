@@ -20,6 +20,38 @@ public class BlueChicken extends Chicken {
 	@Override
 	public void visit(RedShot shot) {
 		System.out.println("Red shot blue chicken");
+		for (int i = 0; i < 2; i++) {
+			Chicken chicken = this.chickens.getChickenByKind("purple");
+			if (chicken != null) {
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+				}
+				chicken.die();
+			}
+		}
+		
+	}
+
+	@Override
+	public void visit(BlueShot shot) {
+		System.out.println("blue shot blue chicken");
+		this.die();
+	}
+
+	@Override
+	public void visit(YellowShot shot) {
+		System.out.println("yellow shot blue chicken");
+		for (int i = 0; i < 2; i++) {
+			Chicken chicken = this.chickens.getChickenByKind("green");
+			if (chicken != null) {
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+				}
+				chicken.die();
+			}
+		}
 		
 	}
 
@@ -28,17 +60,4 @@ public class BlueChicken extends Chicken {
 		System.out.println("black shot blue chicken");
 		
 	}
-
-	@Override
-	public void visit(BlueShot blueShot) {
-		System.out.println("blue shot blue chicken");
-		this.die();
-	}
-
-	@Override
-	public void visit(YellowShot yellowShot) {
-		System.out.println("yellow shot blue chicken");
-		
-	}
-
 }

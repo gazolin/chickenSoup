@@ -26,21 +26,21 @@ public class OrangeChicken extends Chicken {
 	}
 
 	@Override
-	public void visit(BlackShot shot) {
-		System.out.println("black shot orange chicken");
-		
-	}
-
-	@Override
-	public void visit(BlueShot blueShot) {
+	public void visit(BlueShot shot) {
 		System.out.println("blue shot orange chicken");
 		
 	}
 
 	@Override
-	public void visit(YellowShot yellowShot) {
+	public void visit(YellowShot shot) {
 		System.out.println("yellow shot orange chicken");
 		this.die();
+	}
+	
+
+	@Override
+	public void visit(BlackShot shot) {
+		System.out.println("black shot orange chicken");
 		
 	}
 }
