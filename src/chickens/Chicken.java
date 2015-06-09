@@ -29,6 +29,7 @@ public abstract class Chicken implements Visitor {
 		button.setOpaque(false);
 		button.setContentAreaFilled(false);
 		button.setBorderPainted(false);	
+
 	}
 	
 	public JButton getButton() {
@@ -47,7 +48,7 @@ public abstract class Chicken implements Visitor {
 		return alive;
 	}
 	
-	public void kill() {
+	public void die() {
 		this.button.setVisible(false);
 		this.chickens.reduceCount();
 		this.alive = false;

@@ -39,6 +39,6 @@ public class YellowChicken extends Chicken {
 	@Override
 	public void visit(YellowShot yellowShot) {
 		System.out.println("yellow shot yellow chicken");
-		
+		this.die();
 	}
 }

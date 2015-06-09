@@ -24,7 +24,7 @@ public class RedChicken extends Chicken {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 		}
-		this.kill();
+		this.die();
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class RedChicken extends Chicken {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
 				}
-				chicken.kill();
+				chicken.die();
 			}
 		}
 		
@@ -61,7 +61,7 @@ public class RedChicken extends Chicken {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
 				}
-				chicken.kill();
+				chicken.die();
 			}
 		}
 	}

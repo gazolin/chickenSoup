@@ -32,7 +32,7 @@ public class BlueChicken extends Chicken {
 	@Override
 	public void visit(BlueShot blueShot) {
 		System.out.println("blue shot blue chicken");
-		
+		this.die();
 	}
 
 	@Override

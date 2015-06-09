@@ -42,7 +42,7 @@ public class ChickenMatrix extends JPanel  {
 				cord = new Cord(i, j);
 				chicken = createTheChiken(level1[i][j], cord);		
 				row.put(j, chicken);
-				add(chicken.getButton());		//what is it? what is add?
+				this.add(chicken.getButton());	
 			}
 			allChickens.put(i,row);
 		}
@@ -50,9 +50,9 @@ public class ChickenMatrix extends JPanel  {
 		//initLevel(1);
 	}
 	
-	public Chicken createTheChiken (int color, Cord cord) {
+	public Chicken createTheChiken (int kind, Cord cord) {
 		Chicken chicken = null;
-		switch(color) {
+		switch(kind) {
 			case 1:
 				chicken = new RedChicken(cord, this);
 				break;

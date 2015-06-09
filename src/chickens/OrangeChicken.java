@@ -21,6 +21,7 @@ public class OrangeChicken extends Chicken {
 	@Override
 	public void visit(RedShot shot) {
 		System.out.println("Red shot orange chicken");
+		this.die();
 		
 	}
 
@@ -39,6 +40,7 @@ public class OrangeChicken extends Chicken {
 	@Override
 	public void visit(YellowShot yellowShot) {
 		System.out.println("yellow shot orange chicken");
+		this.die();
 		
 	}
 }

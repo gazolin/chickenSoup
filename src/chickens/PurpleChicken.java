@@ -18,12 +18,13 @@ public class PurpleChicken extends Chicken {
 		super(cord, chickens);
 		this.kind = "purple";
 
-		button.setIcon(new ImageIcon("red.png"));
+		button.setIcon(new ImageIcon("purple.png"));	
 	}
 
 	@Override
 	public void visit(RedShot shot) {
 		System.out.println("Red shot purple chicken");
+		this.die();
 		
 	}
 
@@ -36,6 +37,7 @@ public class PurpleChicken extends Chicken {
 	@Override
 	public void visit(BlueShot blueShot) {
 		System.out.println("blue shot purple chicken");
+		this.die();
 		
 	}
 
