@@ -12,8 +12,8 @@ import shots.YellowShot;
 
 public class GreenChicken extends Chicken {
 	
-	public GreenChicken(Cord cord, ChickenMatrix chickens) {
-		super(cord, chickens);
+	public GreenChicken(Cord cord, ChickenMatrix matrix) {
+		super(cord, matrix);
 		this.kind = "green";
 		this.button.setIcon(new ImageIcon("green.png"));
 	}
@@ -27,12 +27,14 @@ public class GreenChicken extends Chicken {
 	@Override
 	public void visit(BlueShot shot) {
 		System.out.println("blue shot green chicken");
+		this.die();
 		
 	}
 
 	@Override
 	public void visit(YellowShot shot) {
 		System.out.println("yellow shot green chicken");
+		this.die();
 		
 	}
 	

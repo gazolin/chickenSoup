@@ -11,8 +11,8 @@ import chickenSoup.Cord;
 
 public class CircleChicken extends Chicken {
 	
-	public CircleChicken(Cord cord, ChickenMatrix chickens) {
-		super(cord, chickens);
+	public CircleChicken(Cord cord, ChickenMatrix matrix) {
+		super(cord, matrix);
 		this.kind = "circle";
 		this.button.setIcon(new ImageIcon("green.png"));
 	}

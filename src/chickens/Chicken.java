@@ -16,14 +16,14 @@ import chickenSoup.Cord;
 public abstract class Chicken implements Visitor {
 
 	protected Cord cord;
-	protected ChickenMatrix chickens;
+	protected ChickenMatrix matrix;
 	protected JButton button;
 	protected String kind;
 	protected boolean alive;
 	
-	public Chicken(Cord cord, ChickenMatrix chickens) {
+	public Chicken(Cord cord, ChickenMatrix matrix) {
 		this.cord = cord;
-		this.chickens = chickens;
+		this.matrix = matrix;
 		alive = true;
 		button = new JButton();
 		button.setOpaque(false);
@@ -50,7 +50,7 @@ public abstract class Chicken implements Visitor {
 	
 	public void die() {
 		this.button.setVisible(false);
-		this.chickens.reduceCount();
+		this.matrix.reduceCount();
 		this.alive = false;
 	}
 

@@ -12,8 +12,8 @@ import shots.YellowShot;
 
 public class BlueChicken extends Chicken {
 
-	public BlueChicken(Cord cord, ChickenMatrix chickens) {
-		super(cord, chickens);
+	public BlueChicken(Cord cord, ChickenMatrix matrix) {
+		super(cord, matrix);
 		this.kind = "blue";
 		button.setIcon(new ImageIcon("blue.png"));
 	}
@@ -21,7 +21,7 @@ public class BlueChicken extends Chicken {
 	public void visit(RedShot shot) {
 		System.out.println("Red shot blue chicken");
 		for (int i = 0; i < 2; i++) {
-			Chicken chicken = this.chickens.getChickenByKind("purple");
+			Chicken chicken = this.matrix.getChickenByKind("purple");
 			if (chicken != null) {
 				try {
 					Thread.sleep(2000);
@@ -43,7 +43,7 @@ public class BlueChicken extends Chicken {
 	public void visit(YellowShot shot) {
 		System.out.println("yellow shot blue chicken");
 		for (int i = 0; i < 2; i++) {
-			Chicken chicken = this.chickens.getChickenByKind("green");
+			Chicken chicken = this.matrix.getChickenByKind("green");
 			if (chicken != null) {
 				try {
 					Thread.sleep(2000);

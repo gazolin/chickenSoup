@@ -12,8 +12,8 @@ import shots.YellowShot;
 
 public class OrangeChicken extends Chicken {
 
-	public OrangeChicken(Cord cord, ChickenMatrix chickens) {
-		super(cord, chickens);
+	public OrangeChicken(Cord cord, ChickenMatrix matrix) {
+		super(cord, matrix);
 		this.kind = "orange";
 		this.button.setIcon(new ImageIcon("orange.png"));
 	}

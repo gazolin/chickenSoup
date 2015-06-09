@@ -1,5 +1,7 @@
 package chickens;
 
+import java.util.Set;
+
 import javax.swing.ImageIcon;
 
 import shots.BlackShot;
@@ -11,10 +13,10 @@ import chickenSoup.Cord;
 
 public class RowChicken extends Chicken {
 	
-	public RowChicken(Cord cord, ChickenMatrix chickens) {
-		super(cord, chickens);
+	public RowChicken(Cord cord, ChickenMatrix matrix) {
+		super(cord, matrix);
 		this.kind = "row";
-		this.button.setIcon(new ImageIcon("green.png"));
+		this.button.setIcon(new ImageIcon("row.png"));
 	}
 
 	@Override
@@ -38,7 +40,20 @@ public class RowChicken extends Chicken {
 	@Override
 	public void visit(BlackShot shot) {
 		System.out.println("black shot green chicken");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		int i = this.cord.getI();
+		Set<Chicken> row = this.matrix.getChickensInRow(i);
+		for (Chicken chicken : row) {
+			if (chicken.isAlive()) {
+				chicken.die();
+			}
+		}
 	}
 
 }

@@ -14,8 +14,8 @@ import shots.YellowShot;
 
 public class PurpleChicken extends Chicken {
 
-	public PurpleChicken(Cord cord, ChickenMatrix chickens) {
-		super(cord, chickens);
+	public PurpleChicken(Cord cord, ChickenMatrix matrix) {
+		super(cord, matrix);
 		this.kind = "purple";
 
 		button.setIcon(new ImageIcon("purple.png"));	
