@@ -1,11 +1,27 @@
 package chickens;
 
+import java.awt.Color;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
+import chickenSoup.ChickenMatrix;
+import chickenSoup.Cord;
 import shots.BlackShot;
 import shots.BlueShot;
 import shots.RedShot;
 import shots.YellowShot;
 
 public class PurpleChicken extends Chicken {
+	
+	private String color;
+
+	public PurpleChicken(Cord cord, ChickenMatrix chickens) {
+		super(cord, chickens);
+		this.color = "purple";
+
+		button.setIcon(new ImageIcon("red.png"));
+	}
 
 	@Override
 	public void visit(RedShot shot) {
@@ -30,4 +46,5 @@ public class PurpleChicken extends Chicken {
 		System.out.println("yellow shot purple chicken");
 		
 	}
+
 }
