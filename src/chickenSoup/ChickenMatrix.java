@@ -16,7 +16,11 @@ import chickens.YellowChicken;
 
 public class ChickenMatrix extends JPanel  {
 	
+	private final int WIDTH = 8;
+	private final int HEIGHT = 4;
+	
 	private Map<Integer, Map<Integer, Chicken>> allChickens;
+	private int chickensCount;
 
 	public ChickenMatrix () {
 		setLayout(new GridLayout(4, 8));
@@ -28,12 +32,13 @@ public class ChickenMatrix extends JPanel  {
 		Chicken chicken;
 		Cord cord;
 		Map<Integer, Chicken> row;
+		chickensCount = HEIGHT * WIDTH;
 		allChickens = new HashMap<Integer, Map<Integer, Chicken>>();
 		
 		/* initiate the matrix */
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < HEIGHT; i++) {
 			row = new HashMap<Integer, Chicken>();	
-			for (int j = 0; j < 8; j++) {
+			for (int j = 0; j < WIDTH; j++) {
 				cord = new Cord(i, j);
 				chicken = createTheChiken(level1[i][j], cord);		
 				row.put(j, chicken);
@@ -42,7 +47,7 @@ public class ChickenMatrix extends JPanel  {
 			allChickens.put(i,row);
 		}
 		/*init level 1/2/3/4*/
-		initLevel(1);
+		//initLevel(1);
 	}
 	
 	public Chicken createTheChiken (int color, Cord cord) {
@@ -66,9 +71,9 @@ public class ChickenMatrix extends JPanel  {
 	
 	private void initLevel(int num) {
 		switch (num){
-		case 1:
-			initLeve1();
-			break;
+//		case 1:
+//			initLeve1();
+//			break;
 		/*case 2:
 			initLeve2();
 			break;
@@ -82,26 +87,39 @@ public class ChickenMatrix extends JPanel  {
 		}
 	}
 	
-	private void initLeve1(){
-		
-		Color red = Color.red;
-		Color blue = Color.blue;
-		Color yellow = Color.yellow;
-		Color orange = Color.orange;
-		
-		int[][] color = {{1, 2, 3, 1, 1, 3, 2, 1}, {3, 1, 2, 2, 2, 2, 1, 3},
-				{2, 3, 1, 3, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
-		Cord curCord = new Cord(0,0);
-		
-		for(int i = 0; i < 4; i++) {
-			for(int j = 0; j < 8; j++) {
-				
-				
-				
-				getChickenByCord(new Cord(i,j)).setIconByColor(color[i][j]);
+//	private void initLeve1(){
+//		
+//		Color red = Color.red;
+//		Color blue = Color.blue;
+//		Color yellow = Color.yellow;
+//		Color orange = Color.orange;
+//		
+//		int[][] color = {{1, 2, 3, 1, 1, 3, 2, 1}, {3, 1, 2, 2, 2, 2, 1, 3},
+//				{2, 3, 1, 3, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
+//		Cord curCord = new Cord(0,0);
+//		
+//		for(int i = 0; i < 4; i++) {
+//			for(int j = 0; j < 8; j++) {				
+//				getChickenByCord(new Cord(i,j)).setIconByColor(color[i][j]);
+//			}
+//		}
+//	}
+	
+	public void reduceCount() {
+		chickensCount --;
+	}
+	
+	public Chicken getChickenByKind(String kind) {
+		Chicken chicken = null;
+		for (int i = 0; i < HEIGHT; i++) {
+			for (int j = 0; j < WIDTH; j++) {
+				chicken = getChickenByCord(new Cord(i, j));
+				if (kind.equals(chicken.getKind()) && chicken.isAlive()) {
+					return chicken;
+				}
 			}
-		}
-		
+		}	
+		return null;
 	}
 	
 	public Chicken getChickenByCord(Cord cord) {

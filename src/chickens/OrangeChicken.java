@@ -12,11 +12,9 @@ import shots.YellowShot;
 
 public class OrangeChicken extends Chicken {
 
-	private String color;
-
 	public OrangeChicken(Cord cord, ChickenMatrix chickens) {
 		super(cord, chickens);
-		this.color = "orange";
+		this.kind = "orange";
 		this.button.setIcon(new ImageIcon("orange.png"));
 	}
 

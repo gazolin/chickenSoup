@@ -38,6 +38,10 @@ public class Level1 extends JFrame implements ActionListener  {
     	
 
     }
+    
+    public ChickenMatrix getMatrix() {
+    	return this.chicks;
+    }
   
 	@Override
 	public void actionPerformed(ActionEvent arg0) {

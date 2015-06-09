@@ -5,6 +5,7 @@ import java.awt.Dimension;
 
 //import javafx.scene.layout.Border;
 
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -14,13 +15,16 @@ import chickenSoup.Cord;
 
 public abstract class Chicken implements Visitor {
 
-	private Cord cord;
-	private ChickenMatrix chickens;
+	protected Cord cord;
+	protected ChickenMatrix chickens;
 	protected JButton button;
+	protected String kind;
+	protected boolean alive;
 	
 	public Chicken(Cord cord, ChickenMatrix chickens) {
 		this.cord = cord;
 		this.chickens = chickens;
+		alive = true;
 		button = new JButton();
 		button.setOpaque(false);
 		button.setContentAreaFilled(false);
@@ -35,24 +39,18 @@ public abstract class Chicken implements Visitor {
 		return cord;
 	}
 	
-	public void setIconByColor(int color) {
-		
-		switch(color) {
-		case 1:
-			button.setIcon(new ImageIcon("red.png"));
-			break;
-		case 2:
-			button.setIcon(new ImageIcon("blue.png"));
-			break;
-		case 3:
-			button.setIcon(new ImageIcon("yellow.png"));
-			break;
-		case 4:
-			button.setIcon(new ImageIcon("orange.png"));
-			break;
-		}
-			
+	public String getKind() {
+		return this.kind;
 	}
-
+	
+	public boolean isAlive() {
+		return alive;
+	}
+	
+	public void kill() {
+		this.button.setVisible(false);
+		this.chickens.reduceCount();
+		this.alive = false;
+	}
 
 }
