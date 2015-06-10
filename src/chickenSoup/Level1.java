@@ -18,24 +18,24 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ship.SpaceShip;
 
-public class Level1 extends JFrame implements ActionListener  {
+
+public class Level1 extends JFrame {
 	
 	private ChickenMatrix chicks;
+	private SpaceShip ship;
+	
     public Level1() {
     	
     	chicks = new ChickenMatrix();
+    	ship = new SpaceShip();
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
-    	ContentPanel panel = new ContentPanel(new ImageIcon("stars.gif").getImage(), chicks);
+    	ContentPanel panel = new ContentPanel(new ImageIcon("stars.gif").getImage(), chicks, ship);
+    	
     	setLocationRelativeTo(null);
     	getContentPane().add(panel);
-    	
-
-    	chicks.setVisible(true);
-    	setVisible(true);
-    	pack();
-    	
-    	
+       	pack();
 
     }
     
@@ -43,11 +43,6 @@ public class Level1 extends JFrame implements ActionListener  {
     	return this.chicks;
     }
   
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 }
 	
 
