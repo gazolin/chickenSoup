@@ -6,6 +6,8 @@ import java.awt.Dimension;
 //import javafx.scene.layout.Border;
 
 
+
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -49,6 +51,10 @@ public abstract class Chicken implements Visitor {
 	}
 	
 	public void die() {
+//		this.button.setIcon(new ImageIcon("explosion.png"));
+//		try {
+//			Thread.sleep(100);
+//		} catch (InterruptedException e) {}
 		this.button.setVisible(false);
 		this.matrix.reduceCount();
 		this.alive = false;

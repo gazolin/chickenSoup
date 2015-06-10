@@ -1,5 +1,7 @@
 package chickens;
 
+import java.util.Set;
+
 import javax.swing.ImageIcon;
 
 import shots.BlackShot;
@@ -14,12 +16,12 @@ public class CircleChicken extends Chicken {
 	public CircleChicken(Cord cord, ChickenMatrix matrix) {
 		super(cord, matrix);
 		this.kind = "circle";
-		this.button.setIcon(new ImageIcon("green.png"));
+		this.button.setIcon(new ImageIcon("circle.png"));
 	}
 
 	@Override
 	public void visit(RedShot shot) {
-		System.out.println("Red shot green chicken");
+		System.out.println("Red shot circle chicken");
 		
 	}
 
@@ -31,13 +33,25 @@ public class CircleChicken extends Chicken {
 
 	@Override
 	public void visit(YellowShot shot) {
-		System.out.println("yellow shot green chicken");
+		System.out.println("yellow shot circle chicken");
 		
 	}
 	
 	@Override
 	public void visit(BlackShot shot) {
-		System.out.println("black shot green chicken");
+		System.out.println("black shot circle chicken");
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {}
+		
+		Set<Chicken> circle = this.matrix.getAllTheChickensAround(cord);
+		for (Chicken chicken : circle) {
+			if (chicken.isAlive()) {
+				chicken.die();
+			}
+		}
+		this.die();
 		
 	}
 

@@ -39,7 +39,7 @@ public class ChickenMatrix extends JPanel  {
 //				{2, 3, 1, 3, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
 		
 		int[][] level1 = {{11, 2, 3, 1, 1, 3, 2, 1}, {3, 1, 2, 2, 2, 2, 1, 3},
-				{2, 3, 8, 3, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
+				{2, 3, 9, 7, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
 		
 		Chicken chicken;
 		Cord cord;
@@ -58,8 +58,6 @@ public class ChickenMatrix extends JPanel  {
 			}
 			allChickens.put(i,row);
 		}
-		/*init level 1/2/3/4*/
-		//initLevel(1);
 	}
 	
 	public Chicken createTheChiken (int kind, Cord cord) {
@@ -154,6 +152,66 @@ public class ChickenMatrix extends JPanel  {
 				ans.add(chicken);
 			}
 		}
+		return ans;
+	}
+	
+	public Set<Chicken> getAllChickenSet() {
+		Set<Chicken> ans = new HashSet<Chicken>();
+		for (Map <Integer, Chicken> row : allChickens.values()) {
+			ans.addAll(row.values());
+		}
+		return ans;
+	}
+	
+	public Set<Chicken> getAllTheChickensAround(Cord cord) {
+		Set<Chicken> ans = new HashSet<Chicken>();
+		Chicken chicken;
+		int i = cord.getI();
+		int j = cord.getJ();
+		
+		if ((chicken = getChickenByCord(new Cord(i-1, j-1))) != null)
+			ans.add(chicken);
+		if ((chicken = getChickenByCord(new Cord(i-1, j))) != null)
+			ans.add(chicken);
+		if ((chicken = getChickenByCord(new Cord(i-1, j+1))) != null)
+			ans.add(chicken);
+		if ((chicken = getChickenByCord(new Cord(i, j-1))) != null)
+			ans.add(chicken);
+		if ((chicken = getChickenByCord(new Cord(i, j+1))) != null)
+			ans.add(chicken);
+		if ((chicken = getChickenByCord(new Cord(i+1, j-1))) != null)
+			ans.add(chicken);
+		if ((chicken = getChickenByCord(new Cord(i+1, j))) != null)
+			ans.add(chicken);
+		if ((chicken = getChickenByCord(new Cord(i+1, j+1))) != null)
+			ans.add(chicken);
+						
+		return ans;
+	}
+	
+	public Set<Chicken> getChickensInEx(Cord cord) {
+		Set<Chicken> ans = new HashSet<Chicken>();
+		Chicken chicken;
+		int i = cord.getI();
+		int j = cord.getJ();
+		
+		if ((chicken = getChickenByCord(new Cord(i-1, j-1))) != null)
+			ans.add(chicken);
+		if ((chicken = getChickenByCord(new Cord(i-2, j-2))) != null)
+			ans.add(chicken);
+		if ((chicken = getChickenByCord(new Cord(i-1, j+1))) != null)
+			ans.add(chicken);
+		if ((chicken = getChickenByCord(new Cord(i-2, j+2))) != null)
+			ans.add(chicken);
+		if ((chicken = getChickenByCord(new Cord(i+1, j-1))) != null)
+			ans.add(chicken);
+		if ((chicken = getChickenByCord(new Cord(i+2, j-2))) != null)
+			ans.add(chicken);
+		if ((chicken = getChickenByCord(new Cord(i+1, j+1))) != null)
+			ans.add(chicken);
+		if ((chicken = getChickenByCord(new Cord(i+2, j+2))) != null)
+			ans.add(chicken);
+						
 		return ans;
 	}
 	

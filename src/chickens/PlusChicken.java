@@ -41,6 +41,13 @@ public class PlusChicken extends Chicken {
 	public void visit(BlackShot shot) {
 		System.out.println("black shot plus chicken");
 		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		Set<Chicken> plus = this.matrix.getChickensInRow(cord.getI());
 		plus.addAll(this.matrix.getChickensInCol(cord.getJ()));
 		

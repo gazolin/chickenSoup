@@ -26,8 +26,7 @@ public class YellowChicken extends Chicken {
 			if (chicken != null) {
 				try {
 					Thread.sleep(2000);
-				} catch (InterruptedException e) {
-				}
+				} catch (InterruptedException e) {}
 				chicken.die();
 			}
 		}
