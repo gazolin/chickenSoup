@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import ship.SpaceShip;
-public class ContentPanel extends JPanel{
+public class ContentPanel extends JPanel {
 		
 	  private Image img;
 	  private ChickenMatrix chickens;
@@ -25,7 +25,7 @@ public class ContentPanel extends JPanel{
 	    setMaximumSize(size);
 	    setSize(size);
 	    add(BorderLayout.NORTH, chickens);
-	    add(BorderLayout.SOUTH, ship.getLabel());
+	    add(BorderLayout.SOUTH, ship.getPanel());
 	 
 	  }
 
