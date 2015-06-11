@@ -31,15 +31,13 @@ public class ChickenMatrix extends JPanel  {
 	private Map<Integer, Map<Integer, Chicken>> allChickens;
 	private int chickensCount;
 
-	public ChickenMatrix () {
+	public ChickenMatrix (int[][] init) {
 		setLayout(new GridLayout(4, 8));
 		setOpaque(false);
 		
 //		int[][] level1 = {{1, 2, 3, 1, 1, 3, 2, 1}, {3, 1, 2, 2, 2, 2, 1, 3},
 //				{2, 3, 1, 3, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
-		
-		int[][] level1 = {{11, 2, 3, 1, 1, 3, 2, 1}, {3, 1, 2, 2, 2, 2, 1, 3},
-				{2, 3, 9, 7, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
+//		
 		
 		Chicken chicken;
 		Cord cord;
@@ -52,7 +50,7 @@ public class ChickenMatrix extends JPanel  {
 			row = new HashMap<Integer, Chicken>();	
 			for (int j = 0; j < WIDTH; j++) {
 				cord = new Cord(i, j);
-				chicken = createTheChiken(level1[i][j], cord);		
+				chicken = createTheChiken(init[i][j], cord);		
 				row.put(j, chicken);
 				this.add(chicken.getButton());	
 			}

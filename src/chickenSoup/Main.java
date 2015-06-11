@@ -17,14 +17,11 @@ public class Main {
 		Shot red = new RedShot();
 		Shot blue = new BlackShot();
 
-		Level1 lvl1 = new Level1();
+		Level lvl1 = new Level(1);
 		lvl1.setVisible(true);
 		lvl1.setLocationRelativeTo(null);
 		
 		ChickenMatrix matrix = lvl1.getMatrix();
-		Cord cord = new Cord(0, 0);
-		//red.shooting(matrix.getChickenByCord(cord));
-		//black.shooting(matrix.getChickenByCord(cord));
 		black.shooting(matrix.getChickenByCord(new Cord(2, 3)));
 		//yellow.shooting(matrix.getChickenByCord(new Cord(0, 3)));
 
