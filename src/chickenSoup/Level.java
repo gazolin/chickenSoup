@@ -7,6 +7,8 @@ import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
+import ship.SpaceShip;
+
 
 public class Level extends JFrame implements ActionListener  {
 	
@@ -15,6 +17,7 @@ public class Level extends JFrame implements ActionListener  {
 			{2, 3, 9, 7, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
 	
 	private ChickenMatrix chicks;
+	private SpaceShip ship;
 	private int level;
 	private Map<Integer, int[][]> levels;
 	
@@ -23,9 +26,11 @@ public class Level extends JFrame implements ActionListener  {
 //    	initLevels();
 //    	chicks = new ChickenMatrix(levels.get(level));
     	chicks = new ChickenMatrix(level1);
+    	ship = new SpaceShip();
+
 
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
-    	ContentPanel panel = new ContentPanel(new ImageIcon("stars.gif").getImage(), chicks);
+    	ContentPanel panel = new ContentPanel(new ImageIcon("stars.gif").getImage(), chicks, ship);
     	setLocationRelativeTo(null);
     	getContentPane().add(panel);
     	
