@@ -7,7 +7,7 @@ import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
+
 
 public class SpaceShip extends JLabel implements KeyListener {
 	
@@ -15,20 +15,20 @@ public class SpaceShip extends JLabel implements KeyListener {
 	
 	private JLabel ship;
 	private ImageIcon img;  
-	private JPanel panel;
-	private JPanel[] matrix;
+	
+
 	
 	
 	public SpaceShip(){
 		ship = new JLabel();
 		img = new ImageIcon("spaceShip.png");
 		ship.setIcon(img);
-		panel = new JPanel(new GridLayout(1, WIDTH));
-		panel.addKeyListener(this);
-		matrix = new JPanel[WIDTH];
-		initMatrix();
+		setFocusable(true);
+		
+		//matrix = new JPanel[WIDTH];
+		//initMatrix();
 		//panel.add(ship);
-		matrix[3].add(ship);
+		//matrix[3].add(ship);
 		
 	}
 	
@@ -36,18 +36,15 @@ public class SpaceShip extends JLabel implements KeyListener {
 		return ship;
 	}
 	
-	public JPanel getPanel() {
-		return panel;
-	}
 	
-	public void initMatrix() {
+	/*public void initMatrix() {
 		for (int i = 0; i < WIDTH; i++) {
 			matrix[i] = new JPanel();
 			matrix[i].addKeyListener(this);
 			panel.add(matrix[i]);
 		}
 	}
-	
+	*/
 	@Override
 	public void keyPressed(KeyEvent e) {
 	    int key = e.getKeyCode();

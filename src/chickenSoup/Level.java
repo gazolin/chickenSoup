@@ -1,5 +1,6 @@
 package chickenSoup;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -8,8 +9,9 @@ import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-import ship.SpaceShip;
+import ship.*;
 
 
 public class Level extends JFrame implements ActionListener  {
@@ -19,6 +21,7 @@ public class Level extends JFrame implements ActionListener  {
 			{2, 3, 9, 7, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
 	
 	private ChickenMatrix chicks;
+	private ShipPanel shipPanel;
 	private SpaceShip ship;
 	private int level;
 	private Map<Integer, int[][]> levels;
@@ -27,13 +30,30 @@ public class Level extends JFrame implements ActionListener  {
     	this.level = level;
 //    	initLevels();
 //    	chicks = new ChickenMatrix(levels.get(level));
-    	chicks = new ChickenMatrix(level1);
     	ship = new SpaceShip();
+    	chicks = new ChickenMatrix(level1);
+    	shipPanel = new ShipPanel(ship);
+    	shipPanel.add(ship);
+    	setFocusable(true);
+    	
 
     	KeyListener listener = new KeyListener() {
 
     		@Override
     		public void keyPressed(KeyEvent event) {
+    			   int key = event.getKeyCode();
+    			   if (key == KeyEvent.VK_LEFT) {
+    				   ship.getLabel().move(ship.getLabel().getLocation().x-10, 0);   
+    			   }
+
+    			    if (key == KeyEvent.VK_RIGHT) {
+    			    	ship.getLabel().move(ship.getLabel().getLocation().x+10, 0);
+    			    }
+    			    
+    			    if (key == KeyEvent.VK_SPACE) {
+    			    	System.out.println("piewpiew!");
+    			    }
+    		   
     		   printEventInfo("Key Pressed", event);
     		}
     		
@@ -77,12 +97,10 @@ public class Level extends JFrame implements ActionListener  {
     	};
     	addKeyListener(listener);
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
-    	ContentPanel panel = new ContentPanel(new ImageIcon("stars.gif").getImage(), chicks, ship);
+    	ContentPanel panel = new ContentPanel(new ImageIcon("stars.gif").getImage(), chicks, shipPanel);
     	setLocationRelativeTo(null);
     	getContentPane().add(panel);
-    	
     	chicks.setVisible(true);
-    	setVisible(true);
     	pack();
     }
     
