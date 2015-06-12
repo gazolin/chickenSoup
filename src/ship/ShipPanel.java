@@ -13,8 +13,6 @@ public class ShipPanel extends JPanel {
     	setFocusable(true);
 
 		setVisible(true);
-		
 
-		
 	}
 }

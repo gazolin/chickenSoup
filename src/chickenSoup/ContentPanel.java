@@ -22,7 +22,7 @@ public class ContentPanel extends JPanel {
 	  
 	  public ContentPanel(Image img, ChickenMatrix chickens, ShipPanel shipPanel) {
 	    this.img = img;
-	    this.ship = ship;
+	    this.ship = ship;		//TODO ??
 	    this.shipPanel=shipPanel;
 	    this.chickens = chickens;
 	    Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
@@ -34,11 +34,7 @@ public class ContentPanel extends JPanel {
 	    add(chickens);
 	    add(Box.createVerticalStrut(250));
 	    add(shipPanel);
-    	setFocusable(true);
-
-	    
-	
-	    
+    	setFocusable(true);  
 	 
 	  }
 	  public int getSizeOfSky(){
