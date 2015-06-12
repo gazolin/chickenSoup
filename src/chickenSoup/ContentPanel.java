@@ -41,6 +41,9 @@ public class ContentPanel extends JPanel {
 	    
 	 
 	  }
+	  public int getSizeOfSky(){
+		  return img.getWidth(this);
+	  }
 
 	 public void paintComponent(Graphics g) {
 	    g.drawImage(img, 0, 0, null);
