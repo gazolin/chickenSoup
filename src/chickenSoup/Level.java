@@ -53,7 +53,7 @@ public class Level extends JFrame implements ActionListener  {
 
     			   if (key == KeyEvent.VK_RIGHT) {	
     				   System.out.println(ship.getLabel().getLocation().x-10);
-    				   if(ship.getLabel().getLocation().x-10 > 100)
+    				   if(ship.getLabel().getLocation().x-10 < lvlPanel.getSizeOfSky()-100)
     					   ship.getLabel().move(ship.getLabel().getLocation().x+10, 0);
     			    }
     			    
