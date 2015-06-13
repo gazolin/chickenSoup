@@ -1,5 +1,8 @@
 package ship;
 
+import java.awt.Graphics;
+
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class ShipPanel extends JPanel {
@@ -15,4 +18,19 @@ public class ShipPanel extends JPanel {
 		setVisible(true);
 
 	}
+	
+	public void neetToRepaint() {
+		repaint();
+	}
+	
+	public void paint(Graphics g) {
+		super.paint(g);
+		JLabel currShot = ship.getCurrShot();
+		if (currShot != null) {
+			System.out.println("1111");
+			currShot.paint(getGraphics());
+		}
+	}
+
+
 }

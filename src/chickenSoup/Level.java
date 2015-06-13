@@ -33,6 +33,7 @@ public class Level extends JFrame implements ActionListener  {
     	chicks = new ChickenMatrix(level1);
     	shipPanel = new ShipPanel(ship);
     	shipPanel.add(ship);
+    	ship.setPanel(shipPanel);
     	setFocusable(true);
        	setDefaultCloseOperation(EXIT_ON_CLOSE);
     	lvlPanel = new ContentPanel(new ImageIcon("stars.gif").getImage(), chicks, shipPanel);
@@ -52,13 +53,14 @@ public class Level extends JFrame implements ActionListener  {
     			   }
 
     			   if (key == KeyEvent.VK_RIGHT) {	
-    				   System.out.println(ship.getLabel().getLocation().x-10);
+//    				   System.out.println(ship.getLabel().getLocation().x-10);
     				   if(ship.getLabel().getLocation().x-10 < lvlPanel.getSizeOfSky()-100)
     					   ship.getLabel().move(ship.getLabel().getLocation().x+10, 0);
     			    }
     			    
     			    if (key == KeyEvent.VK_SPACE) {
     			    	System.out.println("piewpiew!");
+    			    	ship.shot();
     			    }
     		}
     		
