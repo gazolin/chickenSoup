@@ -16,7 +16,7 @@ public class FluChicken extends Chicken {
 	public FluChicken(Cord cord, ChickenMatrix matrix) {
 		super(cord, matrix);
 		this.kind = "flu";
-		this.button.setIcon(new ImageIcon("flu.png"));
+		this.label.setIcon(new ImageIcon("pictures//flu.png"));
 	}
 
 	@Override

@@ -25,6 +25,7 @@ public class Main {
 //		black.shooting(matrix.getChickenByCord(new Cord(2, 3)));
 		//yellow.shooting(matrix.getChickenByCord(new Cord(0, 3)));
 
+
 	}
 
 }

@@ -15,7 +15,7 @@ public class OrangeChicken extends Chicken {
 	public OrangeChicken(Cord cord, ChickenMatrix matrix) {
 		super(cord, matrix);
 		this.kind = "orange";
-		this.button.setIcon(new ImageIcon("orange.png"));
+		this.label.setIcon(new ImageIcon("pictures//orange.png"));
 	}
 
 	@Override

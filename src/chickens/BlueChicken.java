@@ -15,7 +15,7 @@ public class BlueChicken extends Chicken {
 	public BlueChicken(Cord cord, ChickenMatrix matrix) {
 		super(cord, matrix);
 		this.kind = "blue";
-		button.setIcon(new ImageIcon("blue.png"));
+		label.setIcon(new ImageIcon("pictures//blue.png"));
 	}
 	@Override
 	public void visit(RedShot shot) {

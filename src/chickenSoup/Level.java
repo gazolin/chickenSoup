@@ -36,7 +36,7 @@ public class Level extends JFrame implements ActionListener  {
     	ship.setPanel(shipPanel);
     	setFocusable(true);
        	setDefaultCloseOperation(EXIT_ON_CLOSE);
-    	lvlPanel = new ContentPanel(new ImageIcon("stars.gif").getImage(), chicks, shipPanel);
+    	lvlPanel = new ContentPanel(new ImageIcon("pictures//stars.gif").getImage(), chicks, shipPanel);
     	setLocationRelativeTo(null);
     	getContentPane().add(lvlPanel);
     	chicks.setVisible(true);

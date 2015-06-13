@@ -16,7 +16,7 @@ public class ColumnChicken extends Chicken {
 	public ColumnChicken(Cord cord, ChickenMatrix matrix) {
 		super(cord, matrix);
 		this.kind = "column";
-		this.button.setIcon(new ImageIcon("column.png"));
+		this.label.setIcon(new ImageIcon("pictures//column.png"));
 	}
 
 	@Override

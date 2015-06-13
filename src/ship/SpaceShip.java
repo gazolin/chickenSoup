@@ -26,7 +26,7 @@ public class SpaceShip extends JLabel implements ActionListener {
 
 	public SpaceShip(){
 		ship = new JLabel();
-		img = new ImageIcon("spaceShip.png");
+		img = new ImageIcon("pictures//spaceShip.png");
 		ship.setIcon(img);
 		currShot = null;
 		setFocusable(true);
