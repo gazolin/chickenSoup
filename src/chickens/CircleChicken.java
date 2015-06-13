@@ -16,7 +16,7 @@ public class CircleChicken extends Chicken {
 	public CircleChicken(Cord cord, ChickenMatrix matrix) {
 		super(cord, matrix);
 		this.kind = "circle";
-		this.button.setIcon(new ImageIcon("circle.png"));
+		this.label.setIcon(new ImageIcon("pictures//circle.png"));
 	}
 
 	@Override

@@ -52,7 +52,7 @@ public class ChickenMatrix extends JPanel  {
 				cord = new Cord(i, j);
 				chicken = createTheChiken(init[i][j], cord);		
 				row.put(j, chicken);
-				this.add(chicken.getButton());	
+				this.add(chicken.getLabel());	
 			}
 			allChickens.put(i,row);
 		}

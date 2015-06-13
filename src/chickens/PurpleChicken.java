@@ -18,7 +18,7 @@ public class PurpleChicken extends Chicken {
 		super(cord, matrix);
 		this.kind = "purple";
 
-		button.setIcon(new ImageIcon("purple.png"));	
+		label.setIcon(new ImageIcon("pictures//purple.png"));	
 	}
 
 	@Override

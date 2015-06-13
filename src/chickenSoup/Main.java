@@ -23,7 +23,7 @@ public class Main {
 		
 		ChickenMatrix matrix = lvl1.getMatrix();
 		black.shooting(matrix.getChickenByCord(new Cord(2, 3)));
-		//yellow.shooting(matrix.getChickenByCord(new Cord(0, 3)));
+		yellow.shooting(matrix.getChickenByCord(new Cord(0, 3)));
 
 	}
 

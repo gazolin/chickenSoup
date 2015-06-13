@@ -16,7 +16,7 @@ public class XorChicken extends Chicken {
 	public XorChicken(Cord cord, ChickenMatrix matrix) {
 		super(cord, matrix);
 		this.kind = "xor";
-		this.button.setIcon(new ImageIcon("xor.png"));
+		this.label.setIcon(new ImageIcon("pictures//xor.png"));
 	}
 
 	@Override

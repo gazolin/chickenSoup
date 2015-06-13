@@ -8,8 +8,10 @@ import java.awt.Dimension;
 
 
 
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 import chickenSoup.ChickenMatrix;
 import chickenSoup.Cord;
@@ -19,7 +21,7 @@ public abstract class Chicken implements Visitor {
 
 	protected Cord cord;
 	protected ChickenMatrix matrix;
-	protected JButton button;
+	protected JLabel label;
 	protected String kind;
 	protected boolean alive;
 	
@@ -27,15 +29,15 @@ public abstract class Chicken implements Visitor {
 		this.cord = cord;
 		this.matrix = matrix;
 		alive = true;
-		button = new JButton();
-		button.setOpaque(false);
-		button.setContentAreaFilled(false);
-		button.setBorderPainted(false);	
+		label = new JLabel();
+		//label.setOpaque(false);
+		//label.setContentAreaFilled(false);
+		//label.setBorderPainted(false);	
 
 	}
 	
-	public JButton getButton() {
-		return this.button;
+	public JLabel getLabel() {
+		return this.label;
 	}
 	
 	public Cord getCord(){
@@ -55,7 +57,8 @@ public abstract class Chicken implements Visitor {
 //		try {
 //			Thread.sleep(100);
 //		} catch (InterruptedException e) {}
-		this.button.setVisible(false);
+		this.label.setVisible(false);
+		matrix.remove(this.label);	//added this so later we can shoot where no chicken exists (maybe just need a flag)
 		this.matrix.reduceCount();
 		this.alive = false;
 	}

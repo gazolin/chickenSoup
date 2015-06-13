@@ -19,7 +19,7 @@ public class SpaceShip extends JLabel {
 
 	public SpaceShip(){
 		ship = new JLabel();
-		img = new ImageIcon("spaceShip.png");
+		img = new ImageIcon("pictures//spaceShip.png");
 		ship.setIcon(img);
 		setFocusable(true);
 		

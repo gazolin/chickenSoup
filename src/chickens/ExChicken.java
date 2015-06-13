@@ -16,7 +16,7 @@ public class ExChicken extends Chicken {
 	public ExChicken(Cord cord, ChickenMatrix matrix) {
 		super(cord, matrix);
 		this.kind = "ex";
-		this.button.setIcon(new ImageIcon("ex.png"));
+		this.label.setIcon(new ImageIcon("pictures//ex.png"));
 	}
 
 	@Override
