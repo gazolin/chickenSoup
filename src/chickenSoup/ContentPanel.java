@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import ship.*;
+import shots.ShotAnimation;
 
 public class ContentPanel extends JPanel {
 		
@@ -19,10 +20,12 @@ public class ContentPanel extends JPanel {
 	  private ChickenMatrix chickens;
 	  private SpaceShip ship;
 	  private ShipPanel shipPanel;
+	  private ShotAnimation shot;
 	  
 	  public ContentPanel(Image img, ChickenMatrix chickens, ShipPanel shipPanel) {
 	    this.img = img;
 	    this.ship = ship;		//TODO ??
+	    this.shot = shot;
 	    this.shipPanel=shipPanel;
 	    this.chickens = chickens;
 	    Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
@@ -34,6 +37,7 @@ public class ContentPanel extends JPanel {
 	    add(chickens);
 	    add(Box.createVerticalStrut(250));
 	    add(shipPanel);
+		add(new ShotAnimation(this));
     	setFocusable(true);  
 	 
 	  }

@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import ship.*;
+import shots.ShotAnimation;
 
 
 public class Level extends JFrame implements ActionListener  {
@@ -29,18 +30,17 @@ public class Level extends JFrame implements ActionListener  {
     	this.level = level;
 //    	initLevels();
 //    	chicks = new ChickenMatrix(levels.get(level));
-    	ship = new SpaceShip();
+       	ship = new SpaceShip();
     	chicks = new ChickenMatrix(level1);
     	shipPanel = new ShipPanel(ship);
     	shipPanel.add(ship);
     	ship.setPanel(shipPanel);
     	setFocusable(true);
        	setDefaultCloseOperation(EXIT_ON_CLOSE);
-    	lvlPanel = new ContentPanel(new ImageIcon("pictures//stars.gif").getImage(), chicks, shipPanel);
+        lvlPanel = new ContentPanel(new ImageIcon("pictures//stars.gif").getImage(), chicks, shipPanel);
+    
     	setLocationRelativeTo(null);
     	getContentPane().add(lvlPanel);
-    	chicks.setVisible(true);
-    	
 
     	KeyListener listener = new KeyListener() {
 
