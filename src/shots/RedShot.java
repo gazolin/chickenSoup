@@ -2,7 +2,7 @@ package shots;
 
 import chickens.Visitor;
 
-public class RedShot implements Shot {
+public class RedShot extends Shot {
 
 	@Override
 	public void shooting(Visitor v) {

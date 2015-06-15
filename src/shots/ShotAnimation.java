@@ -11,28 +11,19 @@ import javax.swing.Timer;
 
 import chickenSoup.ContentPanel;
 
-public class ShotAnimation extends JLabel implements ActionListener {
-	private double x, y;
-	private JLabel label;
+public class ShotAnimation {
+	private JLabel shot;
 	private ImageIcon img;
-	//private ContentPanel sky;
 
 	public ShotAnimation() {
 		img = new ImageIcon("pictures//shot.png");
-		label = new JLabel();
-		label.setIcon(img);
-		label.setVisible(false);
+		shot = new JLabel();
+		shot.setIcon(img);
+		shot.setVisible(false);
 	} 
 
-	public JLabel getLabel(){
-		return label;
-	}
-
-	public void actionPerformed(ActionEvent e) {
-		x = label.getLocation().getX();
-		y = label.getLocation().getY() - 20;
-		label.setLocation(label.getLocation().x, label.getLocation().y-10);
-		repaint();
+	public JLabel getShot() {
+		return shot;
 	}
 
 

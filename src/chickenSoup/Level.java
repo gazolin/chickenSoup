@@ -10,8 +10,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import ship.*;
-import shots.ShotAnimation;
-
 
 public class Level extends JFrame implements ActionListener  {
 	
