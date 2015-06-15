@@ -28,6 +28,7 @@ public class ShipPanel extends JPanel {
 		JLabel currShot = ship.getCurrShot();
 		if (currShot != null) {
 			System.out.println("1111");
+			add(currShot);
 			currShot.paint(getGraphics());
 		}
 	}

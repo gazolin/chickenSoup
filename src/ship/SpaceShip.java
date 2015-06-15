@@ -47,17 +47,17 @@ public class SpaceShip extends JLabel implements ActionListener {
 	
 	public void shot() {
 		currShot = new JLabel();
-		currShot.setIcon(new ImageIcon("shot.png"));
+		currShot.setIcon(new ImageIcon("pictures//red.png"));
 		currShot.setVisible(true);
 		panel.add(currShot);
 		panel.neetToRepaint();		
 		
-		if (timer == null) {
-			System.out.println("2222");
-			timer = new Timer(20, this);
-			timer.setInitialDelay(50);
-			timer.start();
-		}
+//		if (timer == null) {
+//			System.out.println("2222");
+//			timer = new Timer(20, this);
+//			timer.setInitialDelay(50);
+//			timer.start();
+//		}
 	}
 
 	@Override
