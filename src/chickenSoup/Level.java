@@ -1,5 +1,6 @@
 package chickenSoup;
 
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -8,6 +9,7 @@ import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.Timer;
 
 import ship.*;
 import shots.ShotAnimation;
@@ -19,14 +21,20 @@ public class Level extends JFrame implements ActionListener  {
 	int[][] level1 = {{11, 2, 3, 1, 1, 3, 2, 1}, {3, 1, 2, 2, 2, 2, 1, 3},
 			{2, 3, 9, 7, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
 	
+	private Timer timer;
 	private ChickenMatrix chicks;
 	private ShipPanel shipPanel;
 	private SpaceShip ship;
 	private int level;
 	private ContentPanel lvlPanel;
 	private Map<Integer, int[][]> levels;
+	private int x, y;
+	private final int delay = 200;
 	
     public Level (int level) {
+    	x = 0; y = 0;
+		timer = new Timer(delay,this);
+		timer.start();
     	this.level = level;
 //    	initLevels();
 //    	chicks = new ChickenMatrix(levels.get(level));
@@ -60,6 +68,9 @@ public class Level extends JFrame implements ActionListener  {
     			    
     			    if (key == KeyEvent.VK_SPACE) {
     			    	System.out.println("piewpiew!");
+    			    	lvlPanel.add(new ShotAnimation(lvlPanel).getLabel());
+    			    	lvlPanel.revalidate();
+    			    	
     			    	ship.shot();
     			    }
     		}
@@ -86,11 +97,18 @@ public class Level extends JFrame implements ActionListener  {
     	return this.chicks;
     }
   
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void paintComponent(Graphics g) {
+	    g.drawImage(new ImageIcon("pictures//shot.png").getImage(), 0, 0, null);
+	  }
+	
+
+	  public void actionPerformed(ActionEvent e){
+		if (e.getSource() == timer){
+			x = x + 5;  y = y + 5;
+			repaint();
+	       }
+	  }
+
 }
 	
 
