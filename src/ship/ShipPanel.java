@@ -16,21 +16,12 @@ public class ShipPanel extends JPanel {
     	setFocusable(true);
 
 		setVisible(true);
+	}
+	
+	public SpaceShip getShip() {
+		return ship;
+	}
 
-	}
-	
-	public void neetToRepaint() {
-		repaint();
-	}
-	
-	public void paint(Graphics g) {
-		super.paint(g);
-		JLabel currShot = ship.getCurrShot();
-		if (currShot != null) {
-			System.out.println("1111");
-			currShot.paint(getGraphics());
-		}
-	}
 
 
 }

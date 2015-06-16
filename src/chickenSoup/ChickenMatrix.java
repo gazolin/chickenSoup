@@ -33,11 +33,7 @@ public class ChickenMatrix extends JPanel  {
 
 	public ChickenMatrix (int[][] init) {
 		setLayout(new GridLayout(4, 8));
-		setOpaque(false);
-		
-//		int[][] level1 = {{1, 2, 3, 1, 1, 3, 2, 1}, {3, 1, 2, 2, 2, 2, 1, 3},
-//				{2, 3, 1, 3, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
-//		
+		setOpaque(false);	
 		
 		Chicken chicken;
 		Cord cord;
@@ -121,11 +117,15 @@ public class ChickenMatrix extends JPanel  {
 		return null;
 	}
 	
-	public boolean isInBounds(Cord cord) {
+	private boolean isInBounds(Cord cord) {
 		return cord.getI() > -1 && cord.getI() < HEIGHT && cord.getJ() > -1 && cord.getJ() < WIDTH;
 	}
 	
-	public Chicken getChickenByCord(Cord cord) {
+	private Chicken getChickenByCord(int x, int y) {
+		return getChickenByCord(new Cord(x,y));
+	}
+	
+	private Chicken getChickenByCord(Cord cord) {
 		if (!isInBounds(cord))
 			return null;
 		return allChickens.get(cord.getI()).get(cord.getJ());
@@ -167,21 +167,21 @@ public class ChickenMatrix extends JPanel  {
 		int i = cord.getI();
 		int j = cord.getJ();
 		
-		if ((chicken = getChickenByCord(new Cord(i-1, j-1))) != null)
+		if ((chicken = getChickenByCord(i-1, j-1)) != null)
 			ans.add(chicken);
-		if ((chicken = getChickenByCord(new Cord(i-1, j))) != null)
+		if ((chicken = getChickenByCord(i-1, j)) != null)
 			ans.add(chicken);
-		if ((chicken = getChickenByCord(new Cord(i-1, j+1))) != null)
+		if ((chicken = getChickenByCord(i-1, j+1)) != null)
 			ans.add(chicken);
-		if ((chicken = getChickenByCord(new Cord(i, j-1))) != null)
+		if ((chicken = getChickenByCord(i, j-1)) != null)
 			ans.add(chicken);
-		if ((chicken = getChickenByCord(new Cord(i, j+1))) != null)
+		if ((chicken = getChickenByCord(i, j+1)) != null)
 			ans.add(chicken);
-		if ((chicken = getChickenByCord(new Cord(i+1, j-1))) != null)
+		if ((chicken = getChickenByCord(i+1, j-1)) != null)
 			ans.add(chicken);
-		if ((chicken = getChickenByCord(new Cord(i+1, j))) != null)
+		if ((chicken = getChickenByCord(i+1, j)) != null)
 			ans.add(chicken);
-		if ((chicken = getChickenByCord(new Cord(i+1, j+1))) != null)
+		if ((chicken = getChickenByCord(i+1, j+1)) != null)
 			ans.add(chicken);
 						
 		return ans;
@@ -193,24 +193,47 @@ public class ChickenMatrix extends JPanel  {
 		int i = cord.getI();
 		int j = cord.getJ();
 		
-		if ((chicken = getChickenByCord(new Cord(i-1, j-1))) != null)
+		if ((chicken = getChickenByCord(i-1, j-1)) != null)
 			ans.add(chicken);
-		if ((chicken = getChickenByCord(new Cord(i-2, j-2))) != null)
+		if ((chicken = getChickenByCord(i-2, j-2)) != null)
 			ans.add(chicken);
-		if ((chicken = getChickenByCord(new Cord(i-1, j+1))) != null)
+		if ((chicken = getChickenByCord(i-1, j+1)) != null)
 			ans.add(chicken);
-		if ((chicken = getChickenByCord(new Cord(i-2, j+2))) != null)
+		if ((chicken = getChickenByCord(i-2, j+2)) != null)
 			ans.add(chicken);
-		if ((chicken = getChickenByCord(new Cord(i+1, j-1))) != null)
+		if ((chicken = getChickenByCord(i+1, j-1)) != null)
 			ans.add(chicken);
-		if ((chicken = getChickenByCord(new Cord(i+2, j-2))) != null)
+		if ((chicken = getChickenByCord(i+2, j-2)) != null)
 			ans.add(chicken);
-		if ((chicken = getChickenByCord(new Cord(i+1, j+1))) != null)
+		if ((chicken = getChickenByCord(i+1, j+1)) != null)
 			ans.add(chicken);
-		if ((chicken = getChickenByCord(new Cord(i+2, j+2))) != null)
+		if ((chicken = getChickenByCord(i+2, j+2)) != null)
 			ans.add(chicken);
 						
 		return ans;
+	}
+	
+	public Set<Chicken> getLowerChickens() {
+		Set<Chicken> ans = new HashSet<Chicken>();
+		Chicken chicken;
+		for (int col = 0; col < WIDTH; col++) {
+			chicken = getLowerChickenInColumn(col);
+			if (chicken != null) {
+				ans.add(chicken);
+			}
+		}
+		return ans;
+	}
+	
+	private Chicken getLowerChickenInColumn(int col) {
+		Chicken chicken = null;
+		for (int i = HEIGHT-1; i > -1; i--) {
+			chicken = getChickenByCord(i, col);
+			if (chicken.isAlive()) {
+				return chicken;
+			}
+		}
+		return chicken;		
 	}
 	
 }

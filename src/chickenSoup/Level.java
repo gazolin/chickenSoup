@@ -10,8 +10,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import ship.*;
-import shots.ShotAnimation;
-
 
 public class Level extends JFrame implements ActionListener  {
 	
@@ -60,7 +58,8 @@ public class Level extends JFrame implements ActionListener  {
     			    
     			    if (key == KeyEvent.VK_SPACE) {
     			    	System.out.println("piewpiew!");
-    			    	ship.shot();
+    			    	lvlPanel.shot();
+    			    	//ship.shot();
     			    }
     		}
     		
