@@ -57,7 +57,7 @@ public abstract class Chicken implements Visitor {
 //		try {
 //			Thread.sleep(100);
 //		} catch (InterruptedException e) {}
-		this.label.setVisible(true);
+		this.label.setVisible(false);
 		matrix.remove(this.label);	//added this so later we can shoot where no chicken exists (maybe just need a flag)
 		this.matrix.reduceCount();
 		this.alive = false;
