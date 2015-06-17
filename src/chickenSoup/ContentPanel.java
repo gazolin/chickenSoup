@@ -15,11 +15,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+
+
+
 import chickens.Chicken;
 import ship.*;
 import shots.RedShot;
 import shots.Shot;
 import shots.ShotAnimation;
+import sun.management.Util;
 
 public class ContentPanel extends JPanel implements ActionListener {
 
@@ -34,7 +38,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 
 	public ContentPanel(Image img, ChickenMatrix chickens, ShipPanel shipPanel) {
 		this.img = img;
-		this.shot = new ShotAnimation();
+		shot = new ShotAnimation(0);
 		this.shipPanel = shipPanel;
 		this.ship = shipPanel.getShip();
 		this.chickens = chickens;
@@ -48,11 +52,10 @@ public class ContentPanel extends JPanel implements ActionListener {
 		add(chickens);
 		add(Box.createVerticalStrut(250));
 		add(shipPanel);
-		add(shot.getShot());
 		setFocusable(true);  
 
 	}
-	public int getSizeOfSky() {
+	public int getWidthOfSky() {
 		return img.getWidth(this);
 	}
 
@@ -61,9 +64,11 @@ public class ContentPanel extends JPanel implements ActionListener {
 	}
 
 	public void shot() {
-		shot.getShot().setLocation(ship.getLocation().x - 100, ship.getLocation().y- 250);
+		
+		shot.setShot(ship.getLabel().getX());
 		shot.getShot().setVisible(true);
-		timer = new Timer(100, this);
+		add(shot.getShot());
+		timer = new Timer(15, this);
 		timer.start();
 	}
 	
@@ -71,13 +76,13 @@ public class ContentPanel extends JPanel implements ActionListener {
 		Set<Chicken> optional = chickens.getLowerChickens();
 		boolean hit = false;
 		for (Chicken chicken : optional) {
-			if (!hit) {
-				hit = Util.jComponentlOverlap(shot.getShot(), chicken.getLabel());
+			//if (!hit) {
+				//hit = Util.jComponentlOverlap(shot.getShot(), chicken.getLabel());
 				if (hit) {
 					currShot.shooting(chicken);
 					stopShot();
 				}
-			}
+			//}
 		}
 		
 	}
@@ -85,13 +90,20 @@ public class ContentPanel extends JPanel implements ActionListener {
 	private void stopShot() {
 		timer.stop();
 		timer = null;
+		shot.getShot().disable();
 		shot.getShot().setVisible(false);
 	}
 	
+	private void isBorder(){
+		if(shot.getShot().getLocation().getY()<-50)
+			stopShot();
+	}
+	
 	public void actionPerformed(ActionEvent e) {
-		shot.getShot().setLocation(shot.getShot().getLocation().x, shot.getShot().getLocation().y-10);
 		checkForHits();
-		repaint();
+		isBorder();
+		shot.getShot().setLocation(shot.getShot().getLocation().x, shot.getShot().getLocation().y-10);
+		shot.getShot().repaint();
 	}
 }
 

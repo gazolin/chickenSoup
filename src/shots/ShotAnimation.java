@@ -15,15 +15,19 @@ public class ShotAnimation {
 	private JLabel shot;
 	private ImageIcon img;
 
-	public ShotAnimation() {
+	public ShotAnimation(int x) {
 		img = new ImageIcon("pictures//shot.png");
 		shot = new JLabel();
+		shot.setLocation(x, 0);
 		shot.setIcon(img);
-		shot.setVisible(false);
+		shot.setVisible(true);
 	} 
 
 	public JLabel getShot() {
 		return shot;
+	}
+	public void setShot(int x){
+		shot.setLocation(x, 0);
 	}
 
 

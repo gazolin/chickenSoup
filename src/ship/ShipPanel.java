@@ -14,7 +14,6 @@ public class ShipPanel extends JPanel {
 		add(ship.getLabel());
 		setOpaque(false);
     	setFocusable(true);
-
 		setVisible(true);
 	}
 	

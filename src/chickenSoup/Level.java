@@ -46,18 +46,19 @@ public class Level extends JFrame implements ActionListener  {
     		public void keyPressed(KeyEvent event) {
     			   int key = event.getKeyCode();
     			   if (key == KeyEvent.VK_LEFT) {
-    				   if(ship.getLabel().getLocation().x-10 > 0)
-    					   ship.getLabel().move(ship.getLabel().getLocation().x-10, 0);   
+    				   if(ship.getLabel().getLocation().x-10 > 0){
+    				   	   ship.getLabel().setLocation(ship.getLabel().getLocation().x-10, 0);
+    				   }
     			   }
 
     			   if (key == KeyEvent.VK_RIGHT) {	
-//    				   System.out.println(ship.getLabel().getLocation().x-10);
-    				   if(ship.getLabel().getLocation().x-10 < lvlPanel.getSizeOfSky()-100)
-    					   ship.getLabel().move(ship.getLabel().getLocation().x+10, 0);
+    				   if(ship.getLabel().getLocation().x-10 < lvlPanel.getWidthOfSky()-100){
+				   	   	   ship.getLabel().setLocation(ship.getLabel().getLocation().x+10, 0);
+    				   }
+    				
     			    }
     			    
     			    if (key == KeyEvent.VK_SPACE) {
-    			    	System.out.println("piewpiew!");
     			    	lvlPanel.shot();
     			    	//ship.shot();
     			    }
