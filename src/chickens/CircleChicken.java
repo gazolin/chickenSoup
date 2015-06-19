@@ -40,11 +40,7 @@ public class CircleChicken extends Chicken {
 	@Override
 	public void visit(BlackShot shot) {
 		System.out.println("black shot circle chicken");
-		
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {}
-		
+
 		Set<Chicken> circle = this.matrix.getAllTheChickensAround(cord);
 		for (Chicken chicken : circle) {
 			if (chicken.isAlive()) {

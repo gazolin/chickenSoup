@@ -40,11 +40,7 @@ public class ExChicken extends Chicken {
 	@Override
 	public void visit(BlackShot shot) {
 		System.out.println("black shot ex chicken");
-		
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {}
-		
+
 		Set<Chicken> ex = this.matrix.getChickensInEx(cord);
 		for (Chicken chicken : ex) {
 			if (chicken.isAlive()) {

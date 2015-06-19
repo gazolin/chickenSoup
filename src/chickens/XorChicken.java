@@ -40,13 +40,7 @@ public class XorChicken extends Chicken {
 	@Override
 	public void visit(BlackShot shot) {
 		System.out.println("black shot xor chicken");
-		
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 		
 		Set<Chicken> xor = this.matrix.getChickensInRow(cord.getI());
 		xor.addAll(this.matrix.getChickensInCol(cord.getJ()));

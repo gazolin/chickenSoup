@@ -23,10 +23,6 @@ public class BlueChicken extends Chicken {
 		for (int i = 0; i < 2; i++) {
 			Chicken chicken = this.matrix.getChickenByKind("purple");
 			if (chicken != null) {
-				try {
-					Thread.sleep(2000);
-				} catch (InterruptedException e) {
-				}
 				chicken.die();
 			}
 		}

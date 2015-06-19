@@ -40,12 +40,7 @@ public class FluChicken extends Chicken {
 	@Override
 	public void visit(BlackShot shot) {
 		System.out.println("black shot flu chicken");
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 		
 		Set<Chicken> chickens = this.matrix.getAllChickenSet();
 		for (Chicken chicken : chickens) {

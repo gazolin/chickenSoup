@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.Timer;
 
 
-public class SpaceShip extends JLabel {
+public class SpaceShip{
 	
 	private final int WIDTH = 8;
 	
@@ -21,7 +21,7 @@ public class SpaceShip extends JLabel {
 		ship = new JLabel();
 		img = new ImageIcon("pictures//spaceShip.png");
 		ship.setIcon(img);
-		setFocusable(true);
+		
 		
 	}
 	

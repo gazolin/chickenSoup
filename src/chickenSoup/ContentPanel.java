@@ -12,8 +12,10 @@ import java.util.Set;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
 
 
 
@@ -29,18 +31,21 @@ public class ContentPanel extends JPanel implements ActionListener {
 
 	private Image img;
 	private ChickenMatrix chickens;
-	private SpaceShip ship;
 	private ShipPanel shipPanel;
-	private ShotAnimation shot;
+	private JLabel shot;
+	private JLabel ship;
 	private Timer timer;
 	private int x, y;
 	private Shot currShot;	//TODO - get from game/level
+	private int distance;
+	private int shipLocation;
 
 	public ContentPanel(Image img, ChickenMatrix chickens, ShipPanel shipPanel) {
+	
 		this.img = img;
-		shot = new ShotAnimation(0);
 		this.shipPanel = shipPanel;
-		this.ship = shipPanel.getShip();
+		this.ship = shipPanel.getShip().getLabel();
+		distance = 0;
 		this.chickens = chickens;
 		this.currShot = new RedShot();		//TODO - temp
 		Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
@@ -52,6 +57,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 		add(chickens);
 		add(Box.createVerticalStrut(250));
 		add(shipPanel);
+		
 		setFocusable(true);  
 
 	}
@@ -63,11 +69,12 @@ public class ContentPanel extends JPanel implements ActionListener {
 		g.drawImage(img, 0, 0, null);
 	}
 
-	public void shot() {
-		
-		shot.setShot(ship.getLabel().getX());
-		shot.getShot().setVisible(true);
-		add(shot.getShot());
+	public void shot(int x) {
+		shipLocation = x;
+	    shot =  (new ShotAnimation()).getShot();
+		shot.setLocation(x+30 , 0);
+	    add(shot);
+		shot.setVisible(true);
 		timer = new Timer(15, this);
 		timer.start();
 	}
@@ -75,35 +82,50 @@ public class ContentPanel extends JPanel implements ActionListener {
 	private void checkForHits() {
 		Set<Chicken> optional = chickens.getLowerChickens();
 		boolean hit = false;
+		Chicken deadChicken = null;
 		for (Chicken chicken : optional) {
-			//if (!hit) {
-				//hit = Util.jComponentlOverlap(shot.getShot(), chicken.getLabel());
-				if (hit) {
-					currShot.shooting(chicken);
-					stopShot();
-				}
-			//}
+
+			if((chicken.getLabel().getX() > shot.getX() -40 && chicken.getLabel().getX() < shot.getX() + 40)
+					&& (chicken.getLabel().getY() > shot.getY() )){
+				chicken.getLabel().getLocation(shot.getLocation());
+				hit = true;
+				deadChicken = chicken;
+				
+			}
+				
+			if (hit) {
+				currShot.shooting(deadChicken);
+				stopShot();
+				break;
+			}
+			
 		}
 		
 	}
 	
 	private void stopShot() {
+		
 		timer.stop();
-		timer = null;
-		shot.getShot().disable();
-		shot.getShot().setVisible(false);
+		shot.setVisible(false);
+		distance = 400;
+    	ship.setLocation(shipLocation,0);
+
+		
 	}
 	
 	private void isBorder(){
-		if(shot.getShot().getLocation().getY()<-50)
+		if(shot.getLocation().getY()<-50)
 			stopShot();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
+		
+		shot.setLocation (shipLocation, ship.getY() + distance);
+    	ship.setLocation(shipLocation,0);
+
+		distance-=10;
 		checkForHits();
 		isBorder();
-		shot.getShot().setLocation(shot.getShot().getLocation().x, shot.getShot().getLocation().y-10);
-		shot.getShot().repaint();
 	}
 }
 

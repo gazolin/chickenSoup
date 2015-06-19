@@ -20,10 +20,7 @@ public class RedChicken extends Chicken {
 	@Override
 	public void visit(RedShot shot) {
 		System.out.println("Red shot red chicken");
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-		}
+	
 		this.die();
 	}
 
@@ -34,10 +31,7 @@ public class RedChicken extends Chicken {
 		for (int i = 0; i < 2; i++) {
 			Chicken chicken = this.matrix.getChickenByKind("purple");
 			if (chicken != null) {
-				try {
-					Thread.sleep(2000);
-				} catch (InterruptedException e) {
-				}
+		
 				chicken.die();
 			}
 		}
@@ -51,10 +45,7 @@ public class RedChicken extends Chicken {
 		for (int i = 0; i < 2; i++) {
 			Chicken chicken = this.matrix.getChickenByKind("orange");
 			if (chicken != null) {
-				try {
-					Thread.sleep(2000);
-				} catch (InterruptedException e) {
-				}
+			
 				chicken.die();
 			}
 		}

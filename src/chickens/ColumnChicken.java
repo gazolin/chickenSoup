@@ -40,13 +40,7 @@ public class ColumnChicken extends Chicken {
 	@Override
 	public void visit(BlackShot shot) {
 		System.out.println("black shot green chicken");
-		
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 		
 		int j = this.cord.getJ();
 		Set<Chicken> col = this.matrix.getChickensInCol(j);

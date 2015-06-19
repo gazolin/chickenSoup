@@ -24,9 +24,7 @@ public class YellowChicken extends Chicken {
 		for (int i = 0; i < 2; i++) {
 			Chicken chicken = this.matrix.getChickenByKind("orange");
 			if (chicken != null) {
-				try {
-					Thread.sleep(2000);
-				} catch (InterruptedException e) {}
+			
 				chicken.die();
 			}
 		}

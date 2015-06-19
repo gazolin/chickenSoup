@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 
 import ship.*;
 
-public class Level extends JFrame implements ActionListener  {
+public class Level extends JFrame  {
 	
 	
 	int[][] level1 = {{11, 2, 3, 1, 1, 3, 2, 1}, {3, 1, 2, 2, 2, 2, 1, 3},
@@ -23,6 +23,7 @@ public class Level extends JFrame implements ActionListener  {
 	private int level;
 	private ContentPanel lvlPanel;
 	private Map<Integer, int[][]> levels;
+	private int curX;
 	
     public Level (int level) {
     	this.level = level;
@@ -31,7 +32,7 @@ public class Level extends JFrame implements ActionListener  {
        	ship = new SpaceShip();
     	chicks = new ChickenMatrix(level1);
     	shipPanel = new ShipPanel(ship);
-    	shipPanel.add(ship);
+    	shipPanel.add(ship.getLabel());
     	ship.setPanel(shipPanel);
     	setFocusable(true);
        	setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -59,13 +60,22 @@ public class Level extends JFrame implements ActionListener  {
     			    }
     			    
     			    if (key == KeyEvent.VK_SPACE) {
-    			    	lvlPanel.shot();
-    			    	//ship.shot();
+    			    	curX = ship.getLabel().getX();
+    			    	lvlPanel.shot(curX);
+    			    	ship.getLabel().setLocation(curX,0);
+
+    			    	
     			    }
     		}
     		
     		@Override
     		public void keyReleased(KeyEvent event) {
+    			 int key = event.getKeyCode();
+    			 if (key == KeyEvent.VK_SPACE) {
+    				 ship.getLabel().setLocation(curX,0);
+ 			    	
+ 			    }
+    			
     		}
     		
     		@Override
@@ -73,6 +83,7 @@ public class Level extends JFrame implements ActionListener  {
     		}
     			
     	};
+    	
     	addKeyListener(listener);
     	pack();
     }
@@ -86,11 +97,7 @@ public class Level extends JFrame implements ActionListener  {
     	return this.chicks;
     }
   
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+
 }
 	
 

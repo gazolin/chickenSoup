@@ -15,6 +15,8 @@ public class ShipPanel extends JPanel {
 		setOpaque(false);
     	setFocusable(true);
 		setVisible(true);
+	
+
 	}
 	
 	public SpaceShip getShip() {
