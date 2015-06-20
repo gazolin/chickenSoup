@@ -2,11 +2,20 @@ package chickenSoup;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import ship.ShipPanel;
 import ship.SpaceShip;
@@ -151,9 +160,7 @@ public class Level extends JFrame  {
 			break;
 		}
     	
-    	return matrix;
-    	
-    	
+    	return matrix;	
     }
     
     public ChickenMatrix getMatrix() {
@@ -165,8 +172,33 @@ public class Level extends JFrame  {
     }
 
 	public void levelEnds() {
-		int score = toolBar.levelEnds();
-		score = Math.min(0, score);
+		int[] meas = toolBar.levelEnds();
+		int shots = meas[0];
+		int time = meas[1];
+		int score = 600 - 10 * shots - time;
+		int finalScore = Math.max(0, score);
+		
+		final JDialog dialog = new JDialog(this, "Level ended", true);
+		dialog.setSize(200,100);
+		dialog.setLayout(new BorderLayout());
+
+		JPanel panel = new JPanel(new GridLayout(3, 1));
+		panel.add(new JLabel("level time: " + time, SwingConstants.CENTER), BorderLayout.CENTER);
+		panel.add(new JLabel("level shots: " + shots, SwingConstants.CENTER), BorderLayout.CENTER);
+		panel.add(new JLabel("level score: " + finalScore, SwingConstants.CENTER), BorderLayout.CENTER);
+		dialog.add(panel);
+		
+		JButton ok = new JButton("OK");
+		ok.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dialog.dispose();
+			}
+		});
+		dialog.add(ok, BorderLayout.PAGE_END);
+
+		dialog.setLocationRelativeTo(null);
+		dialog.setVisible(true);
 		
 	}
   

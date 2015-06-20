@@ -52,12 +52,14 @@ public class ToolBar extends JPanel implements ActionListener {
 		shotsLabel.setText(shots + "");
 	}
 	
-	public int levelEnds() {
+	public int[] levelEnds() {
 		timer.stop();
 		
-		int score = 10 * shots + time;
-		score = 600 - score;
-		return score;		
+		int[] ans = new int[2];
+		ans[0] = shots;
+		ans[1] = time;
+		
+		return ans;		
 	}
 
 	@Override
