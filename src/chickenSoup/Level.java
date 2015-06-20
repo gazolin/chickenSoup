@@ -43,7 +43,8 @@ public class Level extends JFrame  {
 
     	KeyListener listener = new KeyListener() {
 
-    		@Override
+    		@SuppressWarnings("deprecation")
+			@Override
     		public void keyPressed(KeyEvent event) {
     			   int key = event.getKeyCode();
     			   if (key == KeyEvent.VK_LEFT) {
