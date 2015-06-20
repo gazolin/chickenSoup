@@ -97,7 +97,6 @@ public class Level extends JFrame  {
     			    if (key == KeyEvent.VK_SPACE) {
     			    	curX = ship.getLabel().getX();
     			    	lvlPanel.shot(curX);
-    			    	ship.getLabel().setLocation(curX,100);
     			    }
     			    
     			    if (key == KeyEvent.VK_1 || key == KeyEvent.VK_NUMPAD1) {
@@ -119,11 +118,7 @@ public class Level extends JFrame  {
     		
     		@Override
     		public void keyReleased(KeyEvent event) {
-    			 int key = event.getKeyCode();
-    			 if (key == KeyEvent.VK_SPACE) {
-    				 ship.getLabel().setLocation(curX,0);
- 			    	
- 			    }
+    		
     			
     		}
     		
@@ -183,7 +178,7 @@ public class Level extends JFrame  {
 		totalScore += finalScore;
 		
 		final JDialog dialog = new JDialog(this, "Level " + level  + " ended", true);
-		dialog.setSize(200,100);
+		dialog.setSize(200,400);
 		dialog.setLayout(new BorderLayout());
 
 		JPanel panel = new JPanel(new GridLayout(4, 1));

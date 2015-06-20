@@ -17,7 +17,6 @@ public class ShipPanel extends JPanel {
 		
 		add(ship.getLabel());
 		ship.getLabel().setLocation(widthOfSky/2-50,0);
-		System.out.println(widthOfSky);
 		ship.getLabel().setSize(ship.getLabel().getIcon().getIconWidth(), ship.getLabel().getIcon().getIconHeight());
 		setOpaque(false);
     	setFocusable(true);

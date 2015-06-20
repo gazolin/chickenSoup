@@ -14,7 +14,7 @@ public class YellowChicken extends Chicken {
 	public YellowChicken(Cord cord, ChickenMatrix matrix) {
 		super(cord, matrix);
 		
-		this.kind = "purple";
+		this.kind = "yellow";
 		label.setIcon(new ImageIcon("pictures//yellow.png"));
 	}
 
@@ -24,7 +24,6 @@ public class YellowChicken extends Chicken {
 		for (int i = 0; i < 2; i++) {
 			Chicken chicken = this.matrix.getChickenByKind("orange");
 			if (chicken != null) {
-			
 				chicken.die();
 			}
 		}
@@ -37,10 +36,6 @@ public class YellowChicken extends Chicken {
 		for (int i = 0; i < 2; i++) {
 			Chicken chicken = this.matrix.getChickenByKind("orange");
 			if (chicken != null) {
-				try {
-					Thread.sleep(2000);
-				} catch (InterruptedException e) {
-				}
 				chicken.die();
 			}
 		}

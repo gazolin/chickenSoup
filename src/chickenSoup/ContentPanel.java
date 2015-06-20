@@ -65,10 +65,14 @@ public class ContentPanel extends JPanel implements ActionListener {
 
 	public void shot(int x) {
 		shipLocation = x;
-	    shot =  (new ShotAnimation()).getShot();
-		shot.setLocation(x , 0);
+		this.setLayout(null);
+	    shot =(new ShotAnimation()).getShot();
 	    add(shot);
-		shot.setVisible(true);
+	    shot.setLocation (shipLocation+20, ship.getY() + distance);
+	    shot.setSize(shot.getIcon().getIconWidth(), shot.getIcon().getIconHeight());
+	    shot.setVisible(true);
+	  
+		
 		timer = new Timer(15, this);
 		timer.start();
 		
@@ -82,7 +86,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 		for (Chicken chicken : optional) {
 
 			if((chicken.getLabel().getX() > shot.getX() -80 && chicken.getLabel().getX() < shot.getX() + 20)
-					&& (chicken.getLabel().getY() > shot.getY() )){
+					&& (chicken.getLabel().getY() > shot.getY() - 20 )){
 				chicken.getLabel().getLocation(shot.getLocation());
 				hit = true;
 				deadChicken = chicken;
@@ -104,13 +108,13 @@ public class ContentPanel extends JPanel implements ActionListener {
 	}
 	
 	private void isBorder(){
-		if(shot.getLocation().getY()<-50)
+		if(shot.getLocation().getY() <- 50)
 			stopShot();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		
-		shot.setLocation (shipLocation+20, ship.getY() + distance - 50);
+		shot.setLocation (shipLocation + 25, ship.getY() + distance + 130);
     	ship.setLocation(shipLocation,0);
 
 		distance-=10;
