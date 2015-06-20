@@ -47,7 +47,7 @@ public class Level extends JFrame  {
     	currShot = new BlackShot();
        	ship = new SpaceShip();
     	chicks = createChickenMatrix(level);
-    	shipPanel = new ShipPanel(ship);
+    	shipPanel = new ShipPanel(ship, new ImageIcon("pictures//stars.gif").getImage().getWidth(null));
     	
     	setFocusable(true);
        	setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -76,7 +76,7 @@ public class Level extends JFrame  {
     			    if (key == KeyEvent.VK_SPACE) {
     			    	curX = ship.getLabel().getX();
     			    	lvlPanel.shot(curX);
-    			    	ship.getLabel().setLocation(curX,0);
+    			    	ship.getLabel().setLocation(curX,100);
     			    }
     			    
     			    if (key == KeyEvent.VK_1 || key == KeyEvent.VK_NUMPAD1) {

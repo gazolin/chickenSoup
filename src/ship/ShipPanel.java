@@ -10,13 +10,14 @@ public class ShipPanel extends JPanel {
 	
 	private SpaceShip ship;
 	
-	public ShipPanel(SpaceShip ship){
+	public ShipPanel(SpaceShip ship, int widthOfSky){
 		this.ship = ship;
 		
 		this.setLayout(null);
 		
 		add(ship.getLabel());
-		ship.getLabel().setLocation(400,0);
+		ship.getLabel().setLocation(widthOfSky/2-50,0);
+		System.out.println(widthOfSky);
 		ship.getLabel().setSize(ship.getLabel().getIcon().getIconWidth(), ship.getLabel().getIcon().getIconHeight());
 		setOpaque(false);
     	setFocusable(true);
