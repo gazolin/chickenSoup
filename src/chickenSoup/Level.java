@@ -55,9 +55,11 @@ public class Level extends JFrame  {
 	private Shot currShot;
 	private ToolBar toolBar;
 	private int level;
+	private int totalScore;
 	
-    public Level (int level) {
+    public Level (int level, int totalScore) {
     	this.level = level;    	
+    	this.totalScore = totalScore;
     	currShot = new BlackShot();
        	ship = new SpaceShip();
     	chicks = createChickenMatrix(level);
@@ -178,15 +180,18 @@ public class Level extends JFrame  {
 		int time = meas[1];
 		int score = 600 - 10 * shots - time;
 		int finalScore = Math.max(0, score);
+		totalScore += finalScore;
 		
-		final JDialog dialog = new JDialog(this, "Level ended", true);
+		final JDialog dialog = new JDialog(this, "Level " + level  + " ended", true);
 		dialog.setSize(200,100);
 		dialog.setLayout(new BorderLayout());
 
-		JPanel panel = new JPanel(new GridLayout(3, 1));
+		JPanel panel = new JPanel(new GridLayout(4, 1));
 		panel.add(new JLabel("level time: " + time, SwingConstants.CENTER), BorderLayout.CENTER);
 		panel.add(new JLabel("level shots: " + shots, SwingConstants.CENTER), BorderLayout.CENTER);
 		panel.add(new JLabel("level score: " + finalScore, SwingConstants.CENTER), BorderLayout.CENTER);
+		panel.add(new JLabel("total score: " + totalScore, SwingConstants.CENTER), BorderLayout.CENTER);
+
 		dialog.add(panel);
 		
 		JButton button = new JButton();
@@ -206,7 +211,7 @@ public class Level extends JFrame  {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					dialog.dispose();
-					Level nextLevel = new Level(level + 1);
+					Level nextLevel = new Level(level + 1, totalScore);
 					nextLevel.setVisible(true);
 					nextLevel.setLocationRelativeTo(null);
 				}
