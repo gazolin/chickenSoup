@@ -32,10 +32,6 @@ public abstract class Chicken implements Visitor {
 		this.matrix = matrix;
 		alive = true;
 		label = new JLabel();
-		//label.setOpaque(false);
-		//label.setContentAreaFilled(false);
-		//label.setBorderPainted(false);	
-
 	}
 	
 	public JLabel getLabel() {
@@ -56,9 +52,6 @@ public abstract class Chicken implements Visitor {
 	
 	public void die() {
 //		this.button.setIcon(new ImageIcon("explosion.png"));
-//		try {
-//			Thread.sleep(100);
-//		} catch (InterruptedException e) {}
 		this.label.setVisible(false);
 		matrix.remove(this.label);	//added this so later we can shoot where no chicken exists (maybe just need a flag)
 		this.matrix.reduceCount();

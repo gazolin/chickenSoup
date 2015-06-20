@@ -1,5 +1,7 @@
 package chickenSoup;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -42,6 +44,7 @@ public class Level extends JFrame  {
 	private ContentPanel lvlPanel;
 	private int curX;
 	private Shot currShot;
+	private ToolBar toolBar;
 	
     public Level (int level) {
     	currShot = new BlackShot();
@@ -51,10 +54,16 @@ public class Level extends JFrame  {
     	
     	setFocusable(true);
        	setDefaultCloseOperation(EXIT_ON_CLOSE);
-        lvlPanel = new ContentPanel(new ImageIcon("pictures//stars.gif").getImage(), chicks, shipPanel, this);
+       	
+       	toolBar = new ToolBar();
+        lvlPanel = new ContentPanel(new ImageIcon("pictures//stars.gif").getImage(), chicks, shipPanel, this, toolBar);
     
     	setLocationRelativeTo(null);
-    	getContentPane().add(lvlPanel);
+    	
+    	getContentPane().setLayout(new BorderLayout());
+    	getContentPane().add(toolBar, BorderLayout.NORTH);
+    	getContentPane().add(lvlPanel, BorderLayout.CENTER);
+
 
     	KeyListener listener = new KeyListener() {
 
@@ -120,22 +129,22 @@ public class Level extends JFrame  {
     	ChickenMatrix matrix = null;
     	switch (level) {
 		case 1:
-			matrix = new ChickenMatrix(level1);
+			matrix = new ChickenMatrix(level1, this);
 			break;
 		case 2:
-			matrix = new ChickenMatrix(level2);
+			matrix = new ChickenMatrix(level2, this);
 			break;
 		case 3:
-			matrix = new ChickenMatrix(level3);
+			matrix = new ChickenMatrix(level3, this);
 			break;
 		case 4:
-			matrix = new ChickenMatrix(level4);
+			matrix = new ChickenMatrix(level4, this);
 			break;
 		case 5:
-			matrix = new ChickenMatrix(level5);
+			matrix = new ChickenMatrix(level5, this);
 			break;
 		case 6:
-			matrix = new ChickenMatrix(level6);
+			matrix = new ChickenMatrix(level6, this);
 			break;
 
 		default:
@@ -154,6 +163,12 @@ public class Level extends JFrame  {
     public Shot getShot() {
     	return currShot;
     }
+
+	public void levelEnds() {
+		int score = toolBar.levelEnds();
+		score = Math.min(0, score);
+		
+	}
   
 
 }

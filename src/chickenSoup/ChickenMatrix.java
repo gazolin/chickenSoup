@@ -30,8 +30,10 @@ public class ChickenMatrix extends JPanel  {
 	
 	private Map<Integer, Map<Integer, Chicken>> allChickens;
 	private int chickensCount;
+	private Level level;
 
-	public ChickenMatrix (int[][] init) {
+	public ChickenMatrix (int[][] init, Level level) {
+		this.level = level;
 		setLayout(new GridLayout(4, 8));
 		setOpaque(false);	
 		
@@ -102,6 +104,10 @@ public class ChickenMatrix extends JPanel  {
 	
 	public void reduceCount() {
 		chickensCount --;
+		
+		if (chickensCount == 0) {
+			level.levelEnds();
+		}
 	}
 
 	public Chicken getChickenByKind(String kind) {

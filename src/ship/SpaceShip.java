@@ -1,29 +1,32 @@
 package ship;
 
 
+<<<<<<< HEAD
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+=======
+>>>>>>> origin/master
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.Timer;
 
 
 public class SpaceShip{
-	
-	private final int WIDTH = 8;
-	
+		
 	private JLabel ship;
 	private ImageIcon img;  
-	private Timer timer;
 	private ShipPanel panel;
 
 	public SpaceShip(){
 		ship = new JLabel();
 		img = new ImageIcon("pictures//spaceShip.png");
+<<<<<<< HEAD
 		ship.setIcon(img);		
 		
+=======
+		ship.setIcon(img);
+>>>>>>> origin/master
 	}
 	
 	public JLabel getLabel() {
