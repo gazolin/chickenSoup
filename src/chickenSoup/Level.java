@@ -1,50 +1,65 @@
 package chickenSoup;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-import ship.*;
+import ship.ShipPanel;
+import ship.SpaceShip;
+import shots.BlackShot;
+import shots.BlueShot;
+import shots.RedShot;
+import shots.Shot;
+import shots.YellowShot;
 
+@SuppressWarnings("serial")
 public class Level extends JFrame  {
 	
 	
-	int[][] level1 = {{11, 2, 3, 1, 1, 3, 2, 1}, {3, 1, 2, 2, 2, 2, 1, 3},
+	int[][] level1 = {{1, 2, 3, 1, 1, 3, 2, 1}, {3, 1, 2, 2, 2, 2, 1, 3},
+			{2, 3, 1, 3, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
+	
+	int[][] level2 = {{5, 5, 5, 6, 6, 4, 4, 4}, {3, 9, 1, 1, 1, 1, 9, 3},
+			{3, 1, 2, 2, 2, 2, 1, 3}, {6, 5, 4, 3, 3, 4, 5, 6}}; 
+	
+	int[][] level3 = {{5, 5, 5, 3, 3, 4, 4, 4}, {5, 8, 5, 2, 2, 6, 6, 6},
+			{5, 5, 5, 1, 1, 6, 8, 6}, {4, 4, 4, 8, 4, 6, 6, 6}}; 
+	
+	int[][] level4 = {{5, 5, 4, 4, 5, 5, 4, 4}, {6, 7, 6, 7, 6, 7, 6, 7},
+			{4, 3, 5, 2, 4, 3, 5, 2}, {1, 1, 1, 1, 1, 1, 1, 1}}; 
+	
+	int[][] level5 = {{11, 2, 3, 1, 1, 3, 2, 1}, {3, 1, 2, 2, 2, 2, 1, 3},
+			{2, 3, 9, 7, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
+	
+	int[][] level6 = {{11, 2, 3, 1, 1, 3, 2, 1}, {3, 1, 2, 2, 2, 2, 1, 3},
 			{2, 3, 9, 7, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
 	
 	private ChickenMatrix chicks;
 	private ShipPanel shipPanel;
 	private SpaceShip ship;
-	private int level;
 	private ContentPanel lvlPanel;
-	private Map<Integer, int[][]> levels;
 	private int curX;
+	private Shot currShot;
 	
     public Level (int level) {
-    	this.level = level;
-//    	initLevels();
-//    	chicks = new ChickenMatrix(levels.get(level));
+    	currShot = new BlackShot();
        	ship = new SpaceShip();
-    	chicks = new ChickenMatrix(level1);
+    	chicks = createChickenMatrix(level);
     	shipPanel = new ShipPanel(ship);
     	shipPanel.add(ship.getLabel());
     	ship.setPanel(shipPanel);
     	setFocusable(true);
        	setDefaultCloseOperation(EXIT_ON_CLOSE);
-        lvlPanel = new ContentPanel(new ImageIcon("pictures//stars.gif").getImage(), chicks, shipPanel);
+        lvlPanel = new ContentPanel(new ImageIcon("pictures//stars.gif").getImage(), chicks, shipPanel, this);
     
     	setLocationRelativeTo(null);
     	getContentPane().add(lvlPanel);
 
     	KeyListener listener = new KeyListener() {
 
-    		@SuppressWarnings("deprecation")
-			@Override
+    		@Override
     		public void keyPressed(KeyEvent event) {
     			   int key = event.getKeyCode();
     			   if (key == KeyEvent.VK_LEFT) {
@@ -57,15 +72,28 @@ public class Level extends JFrame  {
     				   if(ship.getLabel().getLocation().x-10 < lvlPanel.getWidthOfSky()-100){
 				   	   	   ship.getLabel().setLocation(ship.getLabel().getLocation().x+10, 0);
     				   }
-    				
     			    }
     			    
     			    if (key == KeyEvent.VK_SPACE) {
     			    	curX = ship.getLabel().getX();
     			    	lvlPanel.shot(curX);
     			    	ship.getLabel().setLocation(curX,0);
-
-    			    	
+    			    }
+    			    
+    			    if (key == KeyEvent.VK_1 || key == KeyEvent.VK_NUMPAD1) {
+    			    	currShot = new BlackShot();
+    			    }
+    			    
+    			    if (key == KeyEvent.VK_2 || key == KeyEvent.VK_NUMPAD2) {
+    			    	currShot = new RedShot();
+    			    }
+    			    
+    			    if (key == KeyEvent.VK_3 || key == KeyEvent.VK_NUMPAD3) {
+    			    	currShot = new BlueShot();
+    			    }
+    			    
+    			    if (key == KeyEvent.VK_4 || key == KeyEvent.VK_NUMPAD4) {
+    			    	currShot = new YellowShot();
     			    }
     		}
     		
@@ -89,13 +117,43 @@ public class Level extends JFrame  {
     	pack();
     }
     
-    public void initLevels() {
-    	int[][] arr = {{1,2},{3,4}};
-    	levels.put(1, arr);
+    public ChickenMatrix createChickenMatrix(int level) {
+    	ChickenMatrix matrix = null;
+    	switch (level) {
+		case 1:
+			matrix = new ChickenMatrix(level1);
+			break;
+		case 2:
+			matrix = new ChickenMatrix(level2);
+			break;
+		case 3:
+			matrix = new ChickenMatrix(level3);
+			break;
+		case 4:
+			matrix = new ChickenMatrix(level4);
+			break;
+		case 5:
+			matrix = new ChickenMatrix(level5);
+			break;
+		case 6:
+			matrix = new ChickenMatrix(level6);
+			break;
+
+		default:
+			break;
+		}
+    	
+    	return matrix;
+    	
+    	
     }
     
     public ChickenMatrix getMatrix() {
     	return this.chicks;
+    }
+    
+    public Shot getShot() {
+    	return currShot;
     }
   
 

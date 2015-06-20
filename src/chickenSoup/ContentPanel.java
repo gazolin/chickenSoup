@@ -1,8 +1,6 @@
 package chickenSoup;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -11,22 +9,15 @@ import java.util.Set;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-
-
-
-
-import chickens.Chicken;
-import ship.*;
-import shots.RedShot;
-import shots.Shot;
+import ship.ShipPanel;
 import shots.ShotAnimation;
-import sun.management.Util;
+import chickens.Chicken;
 
+@SuppressWarnings("serial")
 public class ContentPanel extends JPanel implements ActionListener {
 
 	private Image img;
@@ -36,18 +27,18 @@ public class ContentPanel extends JPanel implements ActionListener {
 	private JLabel ship;
 	private Timer timer;
 	private int x, y;
-	private Shot currShot;	//TODO - get from game/level
 	private int distance;
 	private int shipLocation;
+	private Level level;
 
-	public ContentPanel(Image img, ChickenMatrix chickens, ShipPanel shipPanel) {
+	public ContentPanel(Image img, ChickenMatrix chickens, ShipPanel shipPanel, Level level) {
 	
 		this.img = img;
 		this.shipPanel = shipPanel;
 		this.ship = shipPanel.getShip().getLabel();
-		distance = 0;
+		this.distance = 0;
 		this.chickens = chickens;
-		this.currShot = new RedShot();		//TODO - temp
+		this.level = level;
 		Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
 		setPreferredSize(size);
 		setMinimumSize(size);
@@ -90,27 +81,21 @@ public class ContentPanel extends JPanel implements ActionListener {
 				chicken.getLabel().getLocation(shot.getLocation());
 				hit = true;
 				deadChicken = chicken;
-				
 			}
 				
 			if (hit) {
-				currShot.shooting(deadChicken);
+				level.getShot().shooting(deadChicken);
 				stopShot();
 				break;
-			}
-			
+			}	
 		}
-		
 	}
 	
 	private void stopShot() {
-		
 		timer.stop();
 		shot.setVisible(false);
 		distance = 400;
-    	ship.setLocation(shipLocation,0);
-
-		
+    	ship.setLocation(shipLocation,0);		
 	}
 	
 	private void isBorder(){
