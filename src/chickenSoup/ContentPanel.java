@@ -49,7 +49,8 @@ public class ContentPanel extends JPanel implements ActionListener {
 		add(Box.createVerticalStrut(250));
 		add(shipPanel);
 		
-		setFocusable(true);  
+		setFocusable(true); 
+		
 
 	}
 	public int getWidthOfSky() {

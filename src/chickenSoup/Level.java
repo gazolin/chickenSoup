@@ -48,8 +48,7 @@ public class Level extends JFrame  {
        	ship = new SpaceShip();
     	chicks = createChickenMatrix(level);
     	shipPanel = new ShipPanel(ship);
-    	shipPanel.add(ship.getLabel());
-    	ship.setPanel(shipPanel);
+    	
     	setFocusable(true);
        	setDefaultCloseOperation(EXIT_ON_CLOSE);
         lvlPanel = new ContentPanel(new ImageIcon("pictures//stars.gif").getImage(), chicks, shipPanel, this);
