@@ -54,8 +54,10 @@ public class Level extends JFrame  {
 	private int curX;
 	private Shot currShot;
 	private ToolBar toolBar;
+	private int level;
 	
     public Level (int level) {
+    	this.level = level;    	
     	currShot = new BlackShot();
        	ship = new SpaceShip();
     	chicks = createChickenMatrix(level);
@@ -72,7 +74,6 @@ public class Level extends JFrame  {
     	getContentPane().setLayout(new BorderLayout());
     	getContentPane().add(toolBar, BorderLayout.NORTH);
     	getContentPane().add(lvlPanel, BorderLayout.CENTER);
-
 
     	KeyListener listener = new KeyListener() {
 
@@ -188,18 +189,35 @@ public class Level extends JFrame  {
 		panel.add(new JLabel("level score: " + finalScore, SwingConstants.CENTER), BorderLayout.CENTER);
 		dialog.add(panel);
 		
-		JButton ok = new JButton("OK");
-		ok.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dialog.dispose();
-			}
-		});
-		dialog.add(ok, BorderLayout.PAGE_END);
+		JButton button = new JButton();
+		
+		if (level == 6) {
+			button.setText("OK");
+			button.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					dialog.dispose();
+				}
+			});
+		}
+		else {
+			button.setText("NEXT LEVEL");
+			button.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					dialog.dispose();
+					Level nextLevel = new Level(level + 1);
+					nextLevel.setVisible(true);
+					nextLevel.setLocationRelativeTo(null);
+				}
+			});
+		}
+
+		dialog.add(button, BorderLayout.PAGE_END);
 
 		dialog.setLocationRelativeTo(null);
 		dialog.setVisible(true);
-		
+		this.dispose();
 	}
   
 
