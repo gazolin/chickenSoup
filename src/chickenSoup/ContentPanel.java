@@ -30,8 +30,9 @@ public class ContentPanel extends JPanel implements ActionListener {
 	private int distance;
 	private int shipLocation;
 	private Level level;
+	private ToolBar toolBar;
 
-	public ContentPanel(Image img, ChickenMatrix chickens, ShipPanel shipPanel, Level level) {
+	public ContentPanel(Image img, ChickenMatrix chickens, ShipPanel shipPanel, Level level, ToolBar toolBar) {
 	
 		this.img = img;
 		this.shipPanel = shipPanel;
@@ -39,6 +40,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 		this.distance = 0;
 		this.chickens = chickens;
 		this.level = level;
+		this.toolBar = toolBar;
 		Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
 		setPreferredSize(size);
 		setMinimumSize(size);
@@ -69,6 +71,8 @@ public class ContentPanel extends JPanel implements ActionListener {
 		shot.setVisible(true);
 		timer = new Timer(15, this);
 		timer.start();
+		
+		toolBar.increaseShots();
 	}
 	
 	private void checkForHits() {
