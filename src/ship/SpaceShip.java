@@ -1,13 +1,11 @@
 package ship;
 
 
-<<<<<<< HEAD
+
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-=======
->>>>>>> origin/master
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -21,12 +19,8 @@ public class SpaceShip{
 	public SpaceShip(){
 		ship = new JLabel();
 		img = new ImageIcon("pictures//spaceShip.png");
-<<<<<<< HEAD
-		ship.setIcon(img);		
-		
-=======
 		ship.setIcon(img);
->>>>>>> origin/master
+
 	}
 	
 	public JLabel getLabel() {
