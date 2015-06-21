@@ -101,18 +101,22 @@ public class Level extends JFrame  {
     			    
     			    if (key == KeyEvent.VK_1 || key == KeyEvent.VK_NUMPAD1) {
     			    	currShot = new BlackShot();
+    			    	toolBar.setShot(1);
     			    }
     			    
     			    if (key == KeyEvent.VK_2 || key == KeyEvent.VK_NUMPAD2) {
     			    	currShot = new RedShot();
+    			    	toolBar.setShot(2);
     			    }
     			    
     			    if (key == KeyEvent.VK_3 || key == KeyEvent.VK_NUMPAD3) {
     			    	currShot = new BlueShot();
+    			    	toolBar.setShot(3);
     			    }
     			    
     			    if (key == KeyEvent.VK_4 || key == KeyEvent.VK_NUMPAD4) {
     			    	currShot = new YellowShot();
+    			    	toolBar.setShot(4);
     			    }
     		}
     		
