@@ -33,7 +33,8 @@ public class ContentPanel extends JPanel implements ActionListener {
 	private ToolBar toolBar;
 
 	public ContentPanel(Image img, ChickenMatrix chickens, ShipPanel shipPanel, Level level, ToolBar toolBar) {
-	
+		
+		
 		this.img = img;
 		this.shipPanel = shipPanel;
 		this.ship = shipPanel.getShip().getLabel();
@@ -63,10 +64,10 @@ public class ContentPanel extends JPanel implements ActionListener {
 		g.drawImage(img, 0, 0, null);
 	}
 
-	public void shot(int x) {
+	public void shot(int x, int type) {
 		shipLocation = x;
 		this.setLayout(null);
-	    shot =(new ShotAnimation()).getShot();
+	    shot =(new ShotAnimation(type)).getShot();
 	    add(shot);
 	    shot.setLocation (shipLocation+20, ship.getY() + distance);
 	    shot.setSize(shot.getIcon().getIconWidth(), shot.getIcon().getIconHeight());

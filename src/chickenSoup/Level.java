@@ -56,9 +56,11 @@ public class Level extends JFrame  {
 	private ToolBar toolBar;
 	private int level;
 	private int totalScore;
+	private int shotType;
 	
     public Level (int level, int totalScore) {
-    	this.level = level;    	
+    	this.level = level;   
+    	this.shotType = 1;
     	this.totalScore = totalScore;
     	currShot = new BlackShot();
        	ship = new SpaceShip();
@@ -96,26 +98,30 @@ public class Level extends JFrame  {
     			    
     			    if (key == KeyEvent.VK_SPACE) {
     			    	curX = ship.getLabel().getX();
-    			    	lvlPanel.shot(curX);
+    			    	lvlPanel.shot(curX, shotType);
     			    }
     			    
     			    if (key == KeyEvent.VK_1 || key == KeyEvent.VK_NUMPAD1) {
     			    	currShot = new BlackShot();
+    			    	shotType = 1;
     			    	toolBar.setShot(1);
     			    }
     			    
     			    if (key == KeyEvent.VK_2 || key == KeyEvent.VK_NUMPAD2) {
     			    	currShot = new RedShot();
+    			    	shotType = 2;
     			    	toolBar.setShot(2);
     			    }
     			    
     			    if (key == KeyEvent.VK_3 || key == KeyEvent.VK_NUMPAD3) {
     			    	currShot = new BlueShot();
+    			    	shotType = 3;
     			    	toolBar.setShot(3);
     			    }
     			    
     			    if (key == KeyEvent.VK_4 || key == KeyEvent.VK_NUMPAD4) {
     			    	currShot = new YellowShot();
+    			    	shotType = 4;
     			    	toolBar.setShot(4);
     			    }
     		}
