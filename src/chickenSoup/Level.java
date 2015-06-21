@@ -66,6 +66,8 @@ public class Level extends JFrame  {
 	private int shotType;
 	private boolean isShot;
 	private boolean initTrick;
+	
+
 
     public Level (int level, int totalScore) {
     	this.level = level;   
@@ -254,6 +256,7 @@ public class Level extends JFrame  {
 
 		dialog.setLocationRelativeTo(null);
 		dialog.setVisible(true);
+		player.
 		this.dispose();
 	}
   
@@ -268,7 +271,7 @@ public class Level extends JFrame  {
 		ContinuousAudioDataStream loop = null;
 		
 		try {
-			stream = new AudioStream(new FileInputStream("music//explosion.wav"));
+			stream = new AudioStream(new FileInputStream("music//music2.wav"));
 			data = stream.getData();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
