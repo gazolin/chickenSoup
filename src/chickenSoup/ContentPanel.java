@@ -105,7 +105,8 @@ public class ContentPanel extends JPanel implements ActionListener {
 		timer.stop();
 		shot.setVisible(false);
 		distance = 400;
-    	ship.setLocation(shipLocation,0);		
+    	ship.setLocation(shipLocation,0);
+    	level.resetIsShot();
 	}
 	
 	private void isBorder(){

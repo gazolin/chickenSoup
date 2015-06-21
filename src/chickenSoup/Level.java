@@ -57,6 +57,7 @@ public class Level extends JFrame  {
 	private int level;
 	private int totalScore;
 	private int shotType;
+	private boolean isShot;
 	
     public Level (int level, int totalScore) {
     	this.level = level;   
@@ -97,8 +98,11 @@ public class Level extends JFrame  {
     			    }
     			    
     			    if (key == KeyEvent.VK_SPACE) {
-    			    	curX = ship.getLabel().getX();
-    			    	lvlPanel.shot(curX, shotType);
+    			    	if(!isShot){
+	    			    	isShot = true;
+	    			    	curX = ship.getLabel().getX();
+	    			    	lvlPanel.shot(curX, shotType);
+    			    	}
     			    }
     			    
     			    if (key == KeyEvent.VK_1 || key == KeyEvent.VK_NUMPAD1) {
@@ -230,6 +234,9 @@ public class Level extends JFrame  {
 		this.dispose();
 	}
   
+	public void resetIsShot(){
+		isShot = false;
+	}
 
 }
 	

@@ -12,10 +12,10 @@ public class Main {
 	
 	public static void main (String[] args) {
 				
-		Shot black = new BlackShot();
-		Shot yellow = new YellowShot();
-		Shot red = new RedShot();
-		Shot blue = new BlackShot();
+		//Shot black = new BlackShot();
+		//Shot yellow = new YellowShot();
+		//Shot red = new RedShot();
+		//Shot blue = new BlackShot();
 
 //		Level lvl1 = new Level(1);
 //		lvl1.setVisible(true);
