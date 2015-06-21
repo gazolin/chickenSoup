@@ -34,7 +34,7 @@ public class YellowChicken extends Chicken {
 	public void visit(BlueShot shot) {
 		System.out.println("blue shot yellow chicken");
 		for (int i = 0; i < 2; i++) {
-			Chicken chicken = this.matrix.getChickenByKind("orange");
+			Chicken chicken = this.matrix.getChickenByKind("green");
 			if (chicken != null) {
 				chicken.die();
 			}

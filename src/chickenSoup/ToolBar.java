@@ -60,9 +60,11 @@ public class ToolBar extends JPanel implements ActionListener {
 		
 	}
 	
-	public void increaseShots() {
-		shots++;
-		shotsLabel.setText(shots + "");
+	public void increaseShots(boolean normal) {
+		if(normal){
+			shots++;
+			shotsLabel.setText(shots + "");
+		}
 	}
 	
 	public int[] levelEnds() {

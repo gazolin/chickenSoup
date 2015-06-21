@@ -7,6 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -24,6 +27,10 @@ import shots.BlueShot;
 import shots.RedShot;
 import shots.Shot;
 import shots.YellowShot;
+import sun.audio.AudioData;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+import sun.audio.ContinuousAudioDataStream;
 
 @SuppressWarnings("serial")
 public class Level extends JFrame  {
@@ -58,9 +65,11 @@ public class Level extends JFrame  {
 	private int totalScore;
 	private int shotType;
 	private boolean isShot;
-	
+	private boolean initTrick;
+
     public Level (int level, int totalScore) {
     	this.level = level;   
+    	this.initTrick = false;
     	this.shotType = 1;
     	this.totalScore = totalScore;
     	currShot = new BlackShot();
@@ -79,21 +88,24 @@ public class Level extends JFrame  {
     	getContentPane().setLayout(new BorderLayout());
     	getContentPane().add(toolBar, BorderLayout.NORTH);
     	getContentPane().add(lvlPanel, BorderLayout.CENTER);
-
+    	
+    
     	KeyListener listener = new KeyListener() {
 
     		@Override
     		public void keyPressed(KeyEvent event) {
     			   int key = event.getKeyCode();
+    			
+    			   
     			   if (key == KeyEvent.VK_LEFT) {
     				   if(ship.getLabel().getLocation().x-10 > 0){
-    				   	   ship.getLabel().setLocation(ship.getLabel().getLocation().x-10, 0);
+    				   	   ship.getLabel().setLocation(ship.getLabel().getLocation().x-14, 0);
     				   }
     			   }
 
     			   if (key == KeyEvent.VK_RIGHT) {	
     				   if(ship.getLabel().getLocation().x-10 < lvlPanel.getWidthOfSky()-100){
-				   	   	   ship.getLabel().setLocation(ship.getLabel().getLocation().x+10, 0);
+				   	   	   ship.getLabel().setLocation(ship.getLabel().getLocation().x+14, 0);
     				   }
     			    }
     			    
@@ -101,7 +113,7 @@ public class Level extends JFrame  {
     			    	if(!isShot){
 	    			    	isShot = true;
 	    			    	curX = ship.getLabel().getX();
-	    			    	lvlPanel.shot(curX, shotType);
+	    			    	lvlPanel.shot(curX, shotType, true);
     			    	}
     			    }
     			    
@@ -128,6 +140,8 @@ public class Level extends JFrame  {
     			    	shotType = 4;
     			    	toolBar.setShot(4);
     			    }
+    		
+					
     		}
     		
     		@Override
@@ -143,7 +157,16 @@ public class Level extends JFrame  {
     	};
     	
     	addKeyListener(listener);
+    	
     	pack();
+    	 
+	    if(!initTrick){
+	    	initTrick = true;
+	    	curX = ship.getLabel().getX();
+    		lvlPanel.shot(curX, shotType, false);
+	    }
+	    playMusic();
+		   
     }
     
     public ChickenMatrix createChickenMatrix(int level) {
@@ -236,6 +259,24 @@ public class Level extends JFrame  {
   
 	public void resetIsShot(){
 		isShot = false;
+	}
+	
+	private void playMusic(){
+		AudioPlayer player = AudioPlayer.player;
+		AudioStream stream;
+		AudioData data = null;
+		ContinuousAudioDataStream loop = null;
+		
+		try {
+			stream = new AudioStream(new FileInputStream("music//explosion.wav"));
+			data = stream.getData();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		loop = new ContinuousAudioDataStream(data);
+		player.start(loop);
 	}
 
 }

@@ -64,20 +64,21 @@ public class ContentPanel extends JPanel implements ActionListener {
 		g.drawImage(img, 0, 0, null);
 	}
 
-	public void shot(int x, int type) {
+	public void shot(int x, int type, boolean normal) {
 		shipLocation = x;
 		this.setLayout(null);
 	    shot =(new ShotAnimation(type)).getShot();
-	    add(shot);
+	    if (normal)
+	    	add(shot);
 	    shot.setLocation (shipLocation+20, ship.getY() + distance);
 	    shot.setSize(shot.getIcon().getIconWidth(), shot.getIcon().getIconHeight());
 	    shot.setVisible(true);
 	  
 		
-		timer = new Timer(15, this);
+		timer = new Timer(12, this);
 		timer.start();
 		
-		toolBar.increaseShots();
+		toolBar.increaseShots(normal);
 	}
 	
 	private void checkForHits() {
