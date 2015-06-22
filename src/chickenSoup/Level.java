@@ -89,7 +89,7 @@ public class Level extends JFrame  {
     	setFocusable(true);
        	setDefaultCloseOperation(EXIT_ON_CLOSE);
        	
-       	toolBar = new ToolBar();
+       	toolBar = new ToolBar(level);
         lvlPanel = new ContentPanel(new ImageIcon("pictures//stars.gif").getImage(), chicks, shipPanel, this, toolBar);
     
     	setLocationRelativeTo(null);

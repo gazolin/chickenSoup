@@ -23,17 +23,20 @@ public class ToolBar extends JPanel implements ActionListener {
 	private int shots;
 	private JLabel timeLabel;
 	private JLabel timeText;
+	private JLabel lvlName;
 	private int time;
 	private Timer timer;
 	
 	//newGame.setFont(newGame.getFont().deriveFont(22.0f));
 	
-	public ToolBar() {
+	public ToolBar(int lvl) {
 
-		shotsText = new JLabel("shots: ");
+		lvlName = new JLabel("Level: " + lvl);
+		lvlName.setFont(lvlName.getFont().deriveFont(22.0f));
+		shotsText = new JLabel("Shots: ");
 		shotsText.setFont(shotsText.getFont().deriveFont(22.0f));
 		
-		timeText = new JLabel("time: ");
+		timeText = new JLabel("Time: ");
 		timeText.setFont(timeText.getFont().deriveFont(22.0f));
 		
 		shots = 0;
@@ -54,7 +57,9 @@ public class ToolBar extends JPanel implements ActionListener {
 		add(Box.createHorizontalStrut(100));
 		add(timeText);
 		add(timeLabel);
-		add(Box.createHorizontalStrut(400));
+		add(Box.createHorizontalStrut(150));
+		add(lvlName);
+		add(Box.createHorizontalStrut(200));
 		initShots();
 
 		
