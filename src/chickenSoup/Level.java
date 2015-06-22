@@ -155,8 +155,6 @@ public class Level extends JFrame  {
     		
     		@Override
     		public void keyReleased(KeyEvent event) {
-    		
-    			
     		}
     		
     		@Override
@@ -273,11 +271,7 @@ public class Level extends JFrame  {
 	}
 	
 	private void playMusic(){
-		
-	
-	
-		
-		
+
 		try {
 			stream = new AudioStream(new FileInputStream("music//music2.wav"));
 			data = stream.getData();
