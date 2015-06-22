@@ -169,7 +169,7 @@ public class Level extends JFrame  {
     	
     	pack();
     	 
-	    if(!initTrick){
+	    if(!initTrick) {
 	    	initTrick = true;
 	    	curX = ship.getLabel().getX();
     		lvlPanel.shot(curX, shotType, false);
@@ -238,10 +238,11 @@ public class Level extends JFrame  {
 		JButton button = new JButton();
 		
 		if (level == 6) {
-			button.setText("OK");
+			button.setText("BACK TO MENU");
 			button.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					new Game();
 					dialog.dispose();
 				}
 			});
@@ -273,11 +274,6 @@ public class Level extends JFrame  {
 	}
 	
 	private void playMusic(){
-		
-	
-	
-		
-		
 		try {
 			stream = new AudioStream(new FileInputStream("music//music2.wav"));
 			data = stream.getData();
