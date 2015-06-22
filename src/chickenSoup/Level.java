@@ -10,6 +10,7 @@ import java.awt.event.KeyListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -66,11 +67,17 @@ public class Level extends JFrame  {
 	private int shotType;
 	private boolean isShot;
 	private boolean initTrick;
+
+	private AudioPlayer player;
+	private AudioStream stream;
+	private ContinuousAudioDataStream loop;
+	private AudioData data;
 	
 
 
     public Level (int level, int totalScore) {
     	this.level = level;   
+    	this.player = AudioPlayer.player;
     	this.initTrick = false;
     	this.shotType = 1;
     	this.totalScore = totalScore;
@@ -256,7 +263,8 @@ public class Level extends JFrame  {
 
 		dialog.setLocationRelativeTo(null);
 		dialog.setVisible(true);
-		player.
+		
+		player.stop(loop);
 		this.dispose();
 	}
   
@@ -265,10 +273,6 @@ public class Level extends JFrame  {
 	}
 	
 	private void playMusic(){
-		AudioPlayer player = AudioPlayer.player;
-		AudioStream stream;
-		AudioData data = null;
-		ContinuousAudioDataStream loop = null;
 		
 		try {
 			stream = new AudioStream(new FileInputStream("music//music2.wav"));
