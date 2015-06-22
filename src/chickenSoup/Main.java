@@ -1,33 +1,12 @@
 package chickenSoup;
 
-import shots.BlackShot;
-import shots.RedShot;
-import shots.Shot;
-import shots.YellowShot;
-import chickens.BlueChicken;
-import chickens.Chicken;
-import chickens.RedChicken;
-
 public class Main {
 	
-	public static void main (String[] args) {
-				
-		//Shot black = new BlackShot();
-		//Shot yellow = new YellowShot();
-		//Shot red = new RedShot();
-		//Shot blue = new BlackShot();
-
-//		Level lvl1 = new Level(1);
-//		lvl1.setVisible(true);
-//		lvl1.setLocationRelativeTo(null);
+	public static void main (String[] args) {		
+		//new Game();
 		
-//		ChickenMatrix matrix = lvl1.getMatrix();
-		
-		new Game();
-		
-		//black.shooting(matrix.getChickenByCord(new Cord(2, 3)));
-		//yellow.shooting(matrix.getChickenByCord(new Cord(0, 3)));
-
+		Table.table().read();
+		Table.table().addToTable("nitzan", 10);
 
 	}
 
