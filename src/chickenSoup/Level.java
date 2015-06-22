@@ -155,8 +155,6 @@ public class Level extends JFrame  {
     		
     		@Override
     		public void keyReleased(KeyEvent event) {
-    		
-    			
     		}
     		
     		@Override
