@@ -3,14 +3,18 @@ package chickenSoup;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+@SuppressWarnings("serial")
 public class ToolBar extends JPanel implements ActionListener {
 	
 	private JLabel shotsText;
@@ -19,20 +23,23 @@ public class ToolBar extends JPanel implements ActionListener {
 	private JLabel redIcon;
 	private JLabel blueIcon;
 	private JLabel yellowIcon;
-
-	private int shots;
 	private JLabel timeLabel;
 	private JLabel timeText;
 	private JLabel lvlName;
-	private int time;
-	private Timer timer;
-	
-	//newGame.setFont(newGame.getFont().deriveFont(22.0f));
-	
-	public ToolBar(int lvl) {
+	private JLabel muteLabel;
 
-		lvlName = new JLabel("Level: " + lvl);
+	private int shots;
+	private int time;
+	private Timer timer;	
+	private Level level;
+	
+	public ToolBar(Level lvl) {
+		
+		this.level = lvl;
+
+		lvlName = new JLabel("Level: " + lvl.getLevel());
 		lvlName.setFont(lvlName.getFont().deriveFont(22.0f));
+		
 		shotsText = new JLabel("Shots: ");
 		shotsText.setFont(shotsText.getFont().deriveFont(22.0f));
 		
@@ -50,7 +57,6 @@ public class ToolBar extends JPanel implements ActionListener {
 		timer = new Timer(1000, this);
 		timer.start();
 		
-		
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		add(shotsText);
 		add(shotsLabel);
@@ -59,14 +65,15 @@ public class ToolBar extends JPanel implements ActionListener {
 		add(timeLabel);
 		add(Box.createHorizontalStrut(150));
 		add(lvlName);
-		add(Box.createHorizontalStrut(200));
+		add(Box.createHorizontalStrut(180));
 		initShots();
+		add(Box.createHorizontalStrut(10));
+		initMute();
 
-		
 	}
 	
 	public void increaseShots(boolean normal) {
-		if(normal){
+		if(normal) {
 			shots++;
 			shotsLabel.setText(shots + "");
 		}
@@ -90,29 +97,58 @@ public class ToolBar extends JPanel implements ActionListener {
 		}
 	}
 	
+	public void initMute() {
+		ImageIcon muteImg = new ImageIcon("pictures//mute.png");
+		JLabel muteLabel = new JLabel();
+		muteLabel.setIcon(muteImg);
+		muteLabel.setVisible(true);
+		
+		muteLabel.addMouseListener(new MouseListener() {			
+			@Override
+			public void mouseReleased(MouseEvent e) {}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				level.inverseMute();				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {}
+		});
+			
+		add(muteLabel);
+	}
+	
 	private void initShots(){
 		blackIcon = new JLabel();
 		redIcon = new JLabel();
 		blueIcon = new JLabel();
 		yellowIcon = new JLabel();
 		
-		ImageIcon img = new ImageIcon("pictures//blackShot.png");
-		blackIcon.setIcon(img);
+		ImageIcon black = new ImageIcon("pictures//blackShot.png");
+		blackIcon.setIcon(black);
 		blackIcon.setVisible(true);
 		blackIcon.setBackground(Color.MAGENTA);
 		blackIcon.setOpaque(true);
-		ImageIcon img1 = new ImageIcon("pictures//redShot.png");
-		redIcon.setIcon(img1);
+		
+		ImageIcon red = new ImageIcon("pictures//redShot.png");
+		redIcon.setIcon(red);
 		redIcon.setBackground(Color.MAGENTA);
 		redIcon.setVisible(true);
 		
-		ImageIcon img2 = new ImageIcon("pictures//blueShot.png");
-		blueIcon.setIcon(img2);
+		ImageIcon blue = new ImageIcon("pictures//blueShot.png");
+		blueIcon.setIcon(blue);
 		blueIcon.setBackground(Color.MAGENTA);
 		blueIcon.setVisible(true);
 		
-		ImageIcon img3 = new ImageIcon("pictures//yellowShot.png");
-		yellowIcon.setIcon(img3);
+		ImageIcon yellow = new ImageIcon("pictures//yellowShot.png");
+		yellowIcon.setIcon(yellow);
 		yellowIcon.setBackground(Color.MAGENTA);
 		yellowIcon.setVisible(true);
 		

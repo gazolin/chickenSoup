@@ -5,6 +5,9 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Set;
 
 import javax.swing.Box;
@@ -16,6 +19,10 @@ import javax.swing.Timer;
 
 import ship.ShipPanel;
 import shots.ShotAnimation;
+import sun.audio.AudioData;
+import sun.audio.AudioDataStream;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 import chickens.Chicken;
 
 @SuppressWarnings("serial")
@@ -97,10 +104,32 @@ public class ContentPanel extends JPanel implements ActionListener {
 				
 			if (hit) {
 				level.getShot().shooting(deadChicken);
+				makeSound();
 				stopShot();
 				break;
 			}	
 		}
+	}
+	
+	private void makeSound() {
+		if (level.isMute())
+			return;
+		
+		AudioPlayer player = AudioPlayer.player;;
+		AudioStream stream;
+		AudioDataStream sound;
+		AudioData data = null;
+		
+		try {
+			stream = new AudioStream(new FileInputStream("music//glass.wav"));
+			data = stream.getData();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		sound = new AudioDataStream(data);
+		player.start(sound);
 	}
 	
 	private void stopShot() {

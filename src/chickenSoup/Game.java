@@ -50,7 +50,7 @@ public class Game extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(newGame)) {
 			int level = (Integer)spinner.getValue();
-			Level lvl1 = new Level(level, 0);
+			Level lvl1 = new Level(level, 0, false);
 			lvl1.setVisible(true);
 			lvl1.setLocationRelativeTo(null);
 			this.dispose();

@@ -67,23 +67,7 @@ public abstract class Chicken implements Visitor, ActionListener {
 		return alive;
 	}
 	
-	public void die() {
-		AudioPlayer player = AudioPlayer.player;;
-		AudioStream stream;
-		AudioDataStream sound;
-		AudioData data = null;
-		
-		try {
-			stream = new AudioStream(new FileInputStream("music//glass.wav"));
-			data = stream.getData();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		sound = new AudioDataStream(data);
-		player.start(sound);
-	
+	public void die() {	
 		this.label.setVisible(true);
 		this.label.setIcon(new ImageIcon("pictures//explosion.png"));
 		timer = new Timer(10, this);

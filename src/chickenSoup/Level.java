@@ -67,6 +67,7 @@ public class Level extends JFrame  {
 	private int shotType;
 	private boolean isShot;
 	private boolean initTrick;
+	private boolean mute;
 
 	private AudioPlayer player;
 	private AudioStream stream;
@@ -75,12 +76,13 @@ public class Level extends JFrame  {
 	
 
 
-    public Level (int level, int totalScore) {
+    public Level (int level, int totalScore, boolean mute) {
     	this.level = level;   
     	this.player = AudioPlayer.player;
     	this.initTrick = false;
     	this.shotType = 1;
     	this.totalScore = totalScore;
+    	this.mute = mute;
     	currShot = new BlackShot();
        	ship = new SpaceShip();
     	chicks = createChickenMatrix(level);
@@ -89,7 +91,7 @@ public class Level extends JFrame  {
     	setFocusable(true);
        	setDefaultCloseOperation(EXIT_ON_CLOSE);
        	
-       	toolBar = new ToolBar(level);
+       	toolBar = new ToolBar(this);
         lvlPanel = new ContentPanel(new ImageIcon("pictures//stars.gif").getImage(), chicks, shipPanel, this, toolBar);
     
     	setLocationRelativeTo(null);
@@ -176,6 +178,21 @@ public class Level extends JFrame  {
 		   
     }
     
+    public boolean isMute() {
+    	return mute;
+    }
+    
+    public void inverseMute() {
+    	mute = !mute;
+    	
+		if (mute) {
+			stopMusic();
+		} 
+		else {
+			playMusic();
+		}
+    }
+    
     public ChickenMatrix createChickenMatrix(int level) {
     	ChickenMatrix matrix = null;
     	switch (level) {
@@ -251,7 +268,7 @@ public class Level extends JFrame  {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					dialog.dispose();
-					Level nextLevel = new Level(level + 1, totalScore);
+					Level nextLevel = new Level(level + 1, totalScore, mute);
 					nextLevel.setVisible(true);
 					nextLevel.setLocationRelativeTo(null);
 				}
@@ -271,7 +288,10 @@ public class Level extends JFrame  {
 		isShot = false;
 	}
 	
-	private void playMusic(){
+	public void playMusic() {
+		if (mute)
+			return;
+		
 		try {
 			stream = new AudioStream(new FileInputStream("music//music2.wav"));
 			data = stream.getData();
@@ -282,6 +302,14 @@ public class Level extends JFrame  {
 		}
 		loop = new ContinuousAudioDataStream(data);
 		player.start(loop);
+	}
+	
+	public void stopMusic() {
+		player.stop(loop);
+	}
+
+	public int getLevel() {
+		return level;
 	}
 
 }
