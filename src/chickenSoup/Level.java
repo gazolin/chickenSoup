@@ -71,7 +71,7 @@ public class Level extends JFrame  {
 	private AudioPlayer player;
 	private AudioStream stream;
 	private ContinuousAudioDataStream loop;
-	private AudioData data;
+	private AudioData data = null;
 	
 
 
@@ -273,6 +273,10 @@ public class Level extends JFrame  {
 	}
 	
 	private void playMusic(){
+		
+	
+	
+		
 		
 		try {
 			stream = new AudioStream(new FileInputStream("music//music2.wav"));
