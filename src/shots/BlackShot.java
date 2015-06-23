@@ -1,11 +1,8 @@
 package shots;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 import chickens.Visitor;
 
-public class BlackShot extends Shot {
+public class BlackShot implements Shot {
 	
 	@Override
 	public void shooting(Visitor v) {

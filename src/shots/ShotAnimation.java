@@ -8,36 +8,27 @@ public class ShotAnimation {
 	private ImageIcon img;
 
 	public ShotAnimation(int type) {
+		shot = new JLabel();
+		
 		switch (type) {
 			case 1:
 				img = new ImageIcon("pictures//blackShot.png");
-				shot = new JLabel();
-				shot.setIcon(img);
-				shot.setVisible(false);
 				break;
 			case 2:
 				img = new ImageIcon("pictures//redShot.png");
-				shot = new JLabel();
-				shot.setIcon(img);
-				shot.setVisible(false);
 				break;
 
 			case 3:
 				img = new ImageIcon("pictures//blueShot.png");
-				shot = new JLabel();
-				shot.setIcon(img);
-				shot.setVisible(false);
 				break;
 
 			case 4:
 				img = new ImageIcon("pictures//yellowShot.png");
-				shot = new JLabel();
-				shot.setIcon(img);
-				shot.setVisible(false);
 				break;
-
 		}
 		
+		shot.setIcon(img);
+		shot.setVisible(false);
 	} 
 
 	public JLabel getShot() {
