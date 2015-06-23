@@ -46,6 +46,8 @@ public class Table {
 	}
 	
 	public void addToTable(String name, int score) {
+		read();
+		
 		String date = dateFormat.format(new Date());
 		String line = name + "\t" + score + "\t" + date;
 		
