@@ -64,7 +64,7 @@ public class ToolBar extends JPanel implements ActionListener {
 		add(timeLabel);
 		add(Box.createHorizontalStrut(150));
 		add(lvlName);
-		add(Box.createHorizontalStrut(180));
+		add(Box.createHorizontalStrut(170));
 		initShots();
 		add(Box.createHorizontalStrut(10));
 		initMute();
