@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,6 +20,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import ship.ShipPanel;
@@ -52,8 +54,8 @@ public class Level extends JFrame  {
 	int[][] level5 = {{11, 2, 3, 1, 1, 3, 2, 1}, {3, 1, 2, 2, 2, 2, 1, 3},
 			{2, 3, 9, 7, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
 	
-	int[][] level6 = {{11, 2, 3, 1, 1, 3, 2, 1}, {3, 1, 2, 2, 2, 2, 1, 3},
-			{2, 3, 9, 7, 3, 1, 3, 2}, {1, 2, 3, 4, 4, 3, 2, 1}}; 
+	int[][] level6 = {{11, 2, 3, 1, 1, 3, 2, 1}, {11, 1, 2, 2, 2, 2, 1, 3},
+			{11, 3, 9, 7, 3, 1, 3, 2}, {11, 2, 3, 4, 4, 3, 2, 1}}; 
 	
 	private ChickenMatrix chicks;
 	private ShipPanel shipPanel;
@@ -253,14 +255,40 @@ public class Level extends JFrame  {
 		JButton button = new JButton();
 		
 		if (level == 6) {
-			button.setText("BACK TO MENU");
-			button.addActionListener(new ActionListener() {
+			button.setText("OK");
+			
+			final JDialog nameDialog = new JDialog(this, "Enter your name", true);
+			
+			final JTextField playerName = new JTextField("Player");
+			JButton menu = new JButton("BACK TO MENU");
+			final int scoreToTable = totalScore;
+			menu.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					new Game();
-					dialog.dispose();
+					Table.table().addToTable(playerName.getText(), scoreToTable);
+					nameDialog.dispose();
 				}
 			});
+			
+			nameDialog.setSize(200,200);
+			//nameDialog.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+			nameDialog.setLayout(new FlowLayout());
+			nameDialog.add(new JLabel("Enter your name"));
+			nameDialog.add(playerName);
+//			nameDialog.add(Box.createVerticalStrut(30));
+			nameDialog.add(menu);
+			
+			button.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					dialog.dispose();
+					nameDialog.setVisible(true);
+				}
+			});
+			
+
+			
 		}
 		else {
 			button.setText("NEXT LEVEL");

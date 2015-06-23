@@ -2,6 +2,8 @@ package chickenSoup;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -17,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.StringTokenizer;
 
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 
@@ -66,9 +69,9 @@ public class Table {
 	public void showTable() {
 		read();
 		
-		JDialog dialog = new JDialog();
+		final JDialog dialog = new JDialog();
 		dialog.setSize(270,310);
-		dialog.setLayout(new GridLayout(6, 3));
+		dialog.setLayout(new GridLayout(7, 3));
 		
 		JLabel nameLabel = new JLabel("NAME");
 		nameLabel.setFont(nameLabel.getFont().deriveFont(16.0f));
@@ -83,13 +86,26 @@ public class Table {
 
 		
 		for (int i= 0; i < SIZE; i++) {
+			if (games[i] == null)
+				continue;
 			StringTokenizer tokenizer = new StringTokenizer(games[i], "\t");
 			dialog.add(new JLabel(tokenizer.nextToken()));
 			dialog.add(new JLabel(tokenizer.nextToken()));
 			dialog.add(new JLabel(tokenizer.nextToken()));
 
 		}
-
+		
+		JButton exit = new JButton("EXIT");
+		exit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				dialog.dispose();				
+			}
+		});
+		dialog.add(new JLabel());
+		dialog.add(exit);
+		
+		
 		dialog.setLocationRelativeTo(null);
 		dialog.setVisible(true);
 	}
