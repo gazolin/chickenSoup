@@ -21,27 +21,21 @@ public class PlusChicken extends Chicken {
 
 	@Override
 	public void visit(RedShot shot) {
-		System.out.println("Red shot plus chicken");
 		
 	}
 
 	@Override
 	public void visit(BlueShot shot) {
-		System.out.println("blue shot plus chicken");
 		
 	}
 
 	@Override
 	public void visit(YellowShot shot) {
-		System.out.println("yellow shot plus chicken");
 		
 	}
 	
 	@Override
 	public void visit(BlackShot shot) {
-		System.out.println("black shot plus chicken");
-	
-		
 		Set<Chicken> plus = this.matrix.getChickensInRow(cord.getI());
 		plus.addAll(this.matrix.getChickensInCol(cord.getJ()));
 		
@@ -50,7 +44,6 @@ public class PlusChicken extends Chicken {
 				chicken.die();
 			}
 		}
-		
 	}
 
 }

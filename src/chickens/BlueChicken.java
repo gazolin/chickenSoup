@@ -1,7 +1,6 @@
 package chickens;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 
 import chickenSoup.ChickenMatrix;
 import chickenSoup.Cord;
@@ -17,40 +16,34 @@ public class BlueChicken extends Chicken {
 		this.kind = "blue";
 		label.setIcon(new ImageIcon("pictures//blue.png"));
 	}
+	
 	@Override
 	public void visit(RedShot shot) {
-		System.out.println("Red shot blue chicken");
 		for (int i = 0; i < 2; i++) {
 			Chicken chicken = this.matrix.getChickenByKind("purple");
 			if (chicken != null) {
 				chicken.die();
 			}
 		}
-		
 	}
 
 	@Override
 	public void visit(BlueShot shot) {
-		System.out.println("blue shot blue chicken");
 		this.die();
 	}
 
 	@Override
 	public void visit(YellowShot shot) {
-		System.out.println("yellow shot blue chicken");
 		for (int i = 0; i < 2; i++) {
 			Chicken chicken = this.matrix.getChickenByKind("green");
 			if (chicken != null) {
 				chicken.die();
 			}
-			
 		}
-		
 	}
 
 	@Override
 	public void visit(BlackShot shot) {
-		System.out.println("black shot blue chicken");
 		
 	}
 }

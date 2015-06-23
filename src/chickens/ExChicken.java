@@ -21,36 +21,28 @@ public class ExChicken extends Chicken {
 
 	@Override
 	public void visit(RedShot shot) {
-		System.out.println("Red shot ex chicken");
 		
 	}
 
 	@Override
 	public void visit(BlueShot shot) {
-		System.out.println("blue shot ex chicken");
 		
 	}
 
 	@Override
 	public void visit(YellowShot shot) {
-		System.out.println("yellow shot ex chicken");
 		
 	}
 	
 	@Override
 	public void visit(BlackShot shot) {
-		System.out.println("black shot ex chicken");
-
 		Set<Chicken> ex = this.matrix.getChickensInEx(cord);
 		for (Chicken chicken : ex) {
 			if (chicken.isAlive()) {
 				chicken.die();
 			}
 		}
-		this.die();
-		
-		
-		
+		this.die();		
 	}
 
 }

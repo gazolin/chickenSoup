@@ -21,26 +21,21 @@ public class CircleChicken extends Chicken {
 
 	@Override
 	public void visit(RedShot shot) {
-		System.out.println("Red shot circle chicken");
 		
 	}
 
 	@Override
 	public void visit(BlueShot shot) {
-		System.out.println("blue shot green chicken");
 		
 	}
 
 	@Override
 	public void visit(YellowShot shot) {
-		System.out.println("yellow shot circle chicken");
 		
 	}
 	
 	@Override
 	public void visit(BlackShot shot) {
-		System.out.println("black shot circle chicken");
-
 		Set<Chicken> circle = this.matrix.getAllTheChickensAround(cord);
 		for (Chicken chicken : circle) {
 			if (chicken.isAlive()) {
@@ -48,7 +43,6 @@ public class CircleChicken extends Chicken {
 			}
 		}
 		this.die();
-		
 	}
 
 }

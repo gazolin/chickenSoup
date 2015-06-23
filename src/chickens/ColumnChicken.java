@@ -21,27 +21,21 @@ public class ColumnChicken extends Chicken {
 
 	@Override
 	public void visit(RedShot shot) {
-		System.out.println("Red shot green chicken");
 		
 	}
 
 	@Override
 	public void visit(BlueShot shot) {
-		System.out.println("blue shot green chicken");
 		
 	}
 
 	@Override
 	public void visit(YellowShot shot) {
-		System.out.println("yellow shot green chicken");
 		
 	}
 	
 	@Override
 	public void visit(BlackShot shot) {
-		System.out.println("black shot green chicken");
-	
-		
 		int j = this.cord.getJ();
 		Set<Chicken> col = this.matrix.getChickensInCol(j);
 		for (Chicken chicken : col) {

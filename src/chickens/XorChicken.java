@@ -21,27 +21,21 @@ public class XorChicken extends Chicken {
 
 	@Override
 	public void visit(RedShot shot) {
-		System.out.println("Red shot xor chicken");
 		
 	}
 
 	@Override
 	public void visit(BlueShot shot) {
-		System.out.println("blue shot xor chicken");
 		
 	}
 
 	@Override
 	public void visit(YellowShot shot) {
-		System.out.println("yellow shot xor chicken");
 		
 	}
 	
 	@Override
 	public void visit(BlackShot shot) {
-		System.out.println("black shot xor chicken");
-	
-		
 		Set<Chicken> xor = this.matrix.getChickensInRow(cord.getI());
 		xor.addAll(this.matrix.getChickensInCol(cord.getJ()));
 		xor.addAll(this.matrix.getAllTheChickensAround(cord));
@@ -50,9 +44,7 @@ public class XorChicken extends Chicken {
 			if (chicken.isAlive()) {
 				chicken.die();
 			}
-		}
-		
-		
+		}	
 	}
 
 }

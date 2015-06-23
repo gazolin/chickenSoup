@@ -48,7 +48,6 @@ public abstract class Chicken implements Visitor, ActionListener {
 	public void die() {	
 		this.label.setVisible(true);
 		this.label.setIcon(new ImageIcon("pictures//explosion.png"));
-		System.out.println(cord.toString() + " - " + kind + " has died");
 		timer = new Timer(10, this);
 		timer.start();
 		

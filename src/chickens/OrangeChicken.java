@@ -1,7 +1,6 @@
 package chickens;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 
 import chickenSoup.ChickenMatrix;
 import chickenSoup.Cord;
@@ -20,27 +19,22 @@ public class OrangeChicken extends Chicken {
 
 	@Override
 	public void visit(RedShot shot) {
-		System.out.println("Red shot orange chicken");
 		this.die();
-		
 	}
 
 	@Override
 	public void visit(BlueShot shot) {
-		System.out.println("blue shot orange chicken");
 		
 	}
 
 	@Override
 	public void visit(YellowShot shot) {
-		System.out.println("yellow shot orange chicken");
 		this.die();
 	}
 	
 
 	@Override
 	public void visit(BlackShot shot) {
-		System.out.println("black shot orange chicken");
 		
 	}
 }
