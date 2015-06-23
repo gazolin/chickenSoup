@@ -3,6 +3,7 @@ package chickenSoup;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,6 +18,7 @@ import javax.swing.SpinnerNumberModel;
 public class Game extends JFrame implements ActionListener {
 	
 	private JButton newGame;
+	private JButton table;
 	private JSpinner spinner;
 	
 	
@@ -26,6 +28,9 @@ public class Game extends JFrame implements ActionListener {
 		
 		newGame = new JButton("NEW GAME");
 		newGame.addActionListener(this);
+		
+		table = new JButton("TABLE");
+		table.addActionListener(this);
 		
 		SpinnerNumberModel levelModel = new SpinnerNumberModel(1, 1, 6, 1);
 		spinner = new JSpinner(levelModel);
@@ -38,7 +43,9 @@ public class Game extends JFrame implements ActionListener {
 		tPane.add(spinner);
 		tPane.add(newGame);
 		
+		getContentPane().setLayout(new GridLayout(2, 1));
 		getContentPane().add(tPane);
+		getContentPane().add(table);
 		
 		setVisible(true);
 		pack();
@@ -54,7 +61,11 @@ public class Game extends JFrame implements ActionListener {
 			lvl1.setVisible(true);
 			lvl1.setLocationRelativeTo(null);
 			this.dispose();
-		}		
+		}
+		
+		if (e.getSource().equals(table)) {
+			Table.table().showTable();
+		}
 	}
 }
 	

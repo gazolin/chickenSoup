@@ -1,5 +1,7 @@
 package chickenSoup;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -13,6 +15,10 @@ import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.StringTokenizer;
+
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 
 public class Table {
 
@@ -55,6 +61,37 @@ public class Table {
 		}
 		System.out.println(ans);
 		return ans;
+	}
+	
+	public void showTable() {
+		read();
+		
+		JDialog dialog = new JDialog();
+		dialog.setSize(270,310);
+		dialog.setLayout(new GridLayout(6, 3));
+		
+		JLabel nameLabel = new JLabel("NAME");
+		nameLabel.setFont(nameLabel.getFont().deriveFont(16.0f));
+		JLabel scoreLabel = new JLabel("SCORE");
+		scoreLabel.setFont(scoreLabel.getFont().deriveFont(16.0f));
+		JLabel timeLabel = new JLabel("TIME");
+		timeLabel.setFont(timeLabel.getFont().deriveFont(16.0f));
+		
+		dialog.add(nameLabel);
+		dialog.add(scoreLabel);
+		dialog.add(timeLabel);
+
+		
+		for (int i= 0; i < SIZE; i++) {
+			StringTokenizer tokenizer = new StringTokenizer(games[i], "\t");
+			dialog.add(new JLabel(tokenizer.nextToken()));
+			dialog.add(new JLabel(tokenizer.nextToken()));
+			dialog.add(new JLabel(tokenizer.nextToken()));
+
+		}
+
+		dialog.setLocationRelativeTo(null);
+		dialog.setVisible(true);
 	}
 	
 	public void write(String toWrite) {
