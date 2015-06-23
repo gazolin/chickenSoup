@@ -4,5 +4,5 @@ import chickens.Visitor;
 
 public interface Shot {
 		
-	public void shooting(Visitor v);
+	public boolean shooting(Visitor v);
 }

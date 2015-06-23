@@ -67,6 +67,7 @@ public class Level extends JFrame  {
 	private boolean isShot;
 	private boolean initTrick;
 	private boolean mute;
+	private boolean levelEnded;
 
 	private AudioPlayer player;
 	private AudioStream stream;
@@ -84,6 +85,7 @@ public class Level extends JFrame  {
        	ship = new SpaceShip();
     	chicks = createChickenMatrix(level);
     	shipPanel = new ShipPanel(ship, new ImageIcon("pictures//stars.gif").getImage().getWidth(null));
+    	levelEnded = false;
     	
     	setFocusable(true);
        	setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -174,6 +176,10 @@ public class Level extends JFrame  {
     	return mute;
     }
     
+    public boolean isEnded() {
+    	return levelEnded;
+    }
+    
     public void inverseMute() {
     	mute = !mute;
     	
@@ -218,13 +224,16 @@ public class Level extends JFrame  {
     	return currShot;
     }
 
-	public void levelEnds() {
+	public void levelEnds() {		
 		int[] meas = toolBar.levelEnds();
 		int shots = meas[0];
 		int time = meas[1];
 		int score = 600 - 10 * shots - time;
 		int finalScore = Math.max(0, score);
 		totalScore += finalScore;
+		
+		lvlPanel.makeSound();
+		levelEnded = true;
 		
 		final JDialog dialog = new JDialog(this, "Level " + level  + " ended", true);
 		dialog.setSize(200,400);

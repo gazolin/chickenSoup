@@ -18,32 +18,39 @@ public class BlueChicken extends Chicken {
 	}
 	
 	@Override
-	public void visit(RedShot shot) {
+	public boolean visit(RedShot shot) {
+		boolean died = false;
 		for (int i = 0; i < 2; i++) {
 			Chicken chicken = this.matrix.getChickenByKind("purple");
 			if (chicken != null) {
 				chicken.die();
+				died = true;
 			}
 		}
+		return died;
 	}
 
 	@Override
-	public void visit(BlueShot shot) {
+	public boolean visit(BlueShot shot) {
 		this.die();
+		return true;
 	}
 
 	@Override
-	public void visit(YellowShot shot) {
+	public boolean visit(YellowShot shot) {
+		boolean died = false;
 		for (int i = 0; i < 2; i++) {
 			Chicken chicken = this.matrix.getChickenByKind("green");
 			if (chicken != null) {
 				chicken.die();
+				died = true;
 			}
 		}
+		return died;
 	}
 
 	@Override
-	public void visit(BlackShot shot) {
-		
+	public boolean visit(BlackShot shot) {
+		return false;
 	}
 }

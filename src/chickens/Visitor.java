@@ -7,9 +7,9 @@ import shots.YellowShot;
 
 public interface Visitor {
 	
-	public void visit(RedShot shot);
-	public void visit(BlackShot shot);
-	public void visit(BlueShot shot);
-	public void visit(YellowShot shot);
+	public boolean visit(RedShot shot);
+	public boolean visit(BlackShot shot);
+	public boolean visit(BlueShot shot);
+	public boolean visit(YellowShot shot);
 
 }

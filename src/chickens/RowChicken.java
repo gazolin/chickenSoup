@@ -20,22 +20,22 @@ public class RowChicken extends Chicken {
 	}
 
 	@Override
-	public void visit(RedShot shot) {
-		
+	public boolean visit(RedShot shot) {
+		return false;
 	}
 
 	@Override
-	public void visit(BlueShot shot) {
-		
+	public boolean visit(BlueShot shot) {
+		return false;
 	}
 
 	@Override
-	public void visit(YellowShot shot) {
-		
+	public boolean visit(YellowShot shot) {
+		return false;
 	}
 	
 	@Override
-	public void visit(BlackShot shot) {
+	public boolean visit(BlackShot shot) {
 		int i = this.cord.getI();
 		Set<Chicken> row = this.matrix.getChickensInRow(i);
 		for (Chicken chicken : row) {
@@ -43,6 +43,7 @@ public class RowChicken extends Chicken {
 				chicken.die();
 			}
 		}
+		return true;
 	}
 
 }

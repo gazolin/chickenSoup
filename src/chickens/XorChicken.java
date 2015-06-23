@@ -20,22 +20,22 @@ public class XorChicken extends Chicken {
 	}
 
 	@Override
-	public void visit(RedShot shot) {
-		
+	public boolean visit(RedShot shot) {
+		return false;
 	}
 
 	@Override
-	public void visit(BlueShot shot) {
-		
+	public boolean visit(BlueShot shot) {
+		return false;
 	}
 
 	@Override
-	public void visit(YellowShot shot) {
-		
+	public boolean visit(YellowShot shot) {
+		return false;
 	}
 	
 	@Override
-	public void visit(BlackShot shot) {
+	public boolean visit(BlackShot shot) {
 		Set<Chicken> xor = this.matrix.getChickensInRow(cord.getI());
 		xor.addAll(this.matrix.getChickensInCol(cord.getJ()));
 		xor.addAll(this.matrix.getAllTheChickensAround(cord));
@@ -45,6 +45,7 @@ public class XorChicken extends Chicken {
 				chicken.die();
 			}
 		}	
+		return true;
 	}
 
 }

@@ -6,7 +6,6 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Set;
 
@@ -86,6 +85,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 	private void checkForHits() {
 		Set<Chicken> optional = chickens.getLowerChickens();
 		boolean hit = false;
+		boolean died;
 		Chicken deadChicken = null;
 		for (Chicken chicken : optional) {
 
@@ -97,18 +97,17 @@ public class ContentPanel extends JPanel implements ActionListener {
 			}
 				
 			if (hit) {
-				level.getShot().shooting(deadChicken);
-				makeSound();
+				died = level.getShot().shooting(deadChicken);
+				if (died && !level.isEnded() && !level.isMute()) {
+					makeSound();
+				}
 				stopShot();
 				break;
 			}	
 		}
 	}
 	
-	private void makeSound() {
-		if (level.isMute())
-			return;
-		
+	public void makeSound() {	
 		AudioPlayer player = AudioPlayer.player;;
 		AudioStream stream;
 		AudioDataStream sound;
@@ -117,8 +116,6 @@ public class ContentPanel extends JPanel implements ActionListener {
 		try {
 			stream = new AudioStream(new FileInputStream("music//glass.wav"));
 			data = stream.getData();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

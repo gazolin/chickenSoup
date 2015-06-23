@@ -18,22 +18,24 @@ public class GreenChicken extends Chicken {
 	}
 
 	@Override
-	public void visit(RedShot shot) {
-		
+	public boolean visit(RedShot shot) {
+		return false;
 	}
 
 	@Override
-	public void visit(BlueShot shot) {
+	public boolean visit(BlueShot shot) {
 		this.die();
+		return true;
 	}
 
 	@Override
-	public void visit(YellowShot shot) {
+	public boolean visit(YellowShot shot) {
 		this.die();
+		return true;
 	}
 	
 	@Override
-	public void visit(BlackShot shot) {
-		
+	public boolean visit(BlackShot shot) {
+		return false;
 	}
 }
