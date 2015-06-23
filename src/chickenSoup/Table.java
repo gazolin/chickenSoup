@@ -1,19 +1,13 @@
 package chickenSoup;
 
-import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -64,7 +58,6 @@ public class Table {
 		for (int i = 0; i < SIZE; i++) {
 			ans += (games[i] != null) ? games[i] + "\n" : "";
 		}
-		System.out.println(ans);
 		return ans;
 	}
 	
@@ -85,7 +78,6 @@ public class Table {
 		dialog.add(nameLabel);
 		dialog.add(scoreLabel);
 		dialog.add(timeLabel);
-
 		
 		for (int i= 0; i < SIZE; i++) {
 			if (games[i] == null)
@@ -94,7 +86,6 @@ public class Table {
 			dialog.add(new JLabel(tokenizer.nextToken()));
 			dialog.add(new JLabel(tokenizer.nextToken()));
 			dialog.add(new JLabel(tokenizer.nextToken()));
-
 		}
 		
 		JButton exit = new JButton("MENU");
@@ -106,8 +97,6 @@ public class Table {
 		});
 		dialog.add(new JLabel());
 		dialog.add(exit);
-		
-		
 		dialog.setLocationRelativeTo(null);
 		dialog.setVisible(true);
 	}
@@ -134,7 +123,6 @@ public class Table {
 			}
 			
 			in.close();
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
