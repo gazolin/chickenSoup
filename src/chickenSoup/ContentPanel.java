@@ -98,7 +98,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 				
 			if (hit) {
 				died = level.getShot().shooting(deadChicken);
-				if (died && !level.isEnded() && !level.isMute()) {
+				if (died && !level.isEnded()) {
 					makeSound();
 				}
 				stopShot();
@@ -108,6 +108,9 @@ public class ContentPanel extends JPanel implements ActionListener {
 	}
 	
 	public void makeSound() {	
+		if (level.isMute())
+			return;
+		
 		AudioPlayer player = AudioPlayer.player;;
 		AudioStream stream;
 		AudioDataStream sound;

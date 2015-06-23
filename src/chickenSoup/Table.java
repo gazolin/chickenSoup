@@ -16,6 +16,7 @@ import java.util.StringTokenizer;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class Table {
 
@@ -53,26 +54,18 @@ public class Table {
 		write(gamesString());
 	}
 	
-	public String gamesString() {
-		String ans = "";
-		for (int i = 0; i < SIZE; i++) {
-			ans += (games[i] != null) ? games[i] + "\n" : "";
-		}
-		return ans;
-	}
-	
 	public void showTable() {
 		read();
 		
 		final JDialog dialog = new JDialog();
-		dialog.setSize(270,310);
+		dialog.setSize(290,310);
 		dialog.setLayout(new GridLayout(7, 3));
 		
-		JLabel nameLabel = new JLabel("NAME");
+		JLabel nameLabel = new JLabel("NAME", SwingConstants.CENTER);
 		nameLabel.setFont(nameLabel.getFont().deriveFont(16.0f));
-		JLabel scoreLabel = new JLabel("SCORE");
+		JLabel scoreLabel = new JLabel("SCORE", SwingConstants.CENTER);
 		scoreLabel.setFont(scoreLabel.getFont().deriveFont(16.0f));
-		JLabel timeLabel = new JLabel("TIME");
+		JLabel timeLabel = new JLabel("TIME", SwingConstants.CENTER);
 		timeLabel.setFont(timeLabel.getFont().deriveFont(16.0f));
 		
 		dialog.add(nameLabel);
@@ -83,9 +76,9 @@ public class Table {
 			if (games[i] == null)
 				continue;
 			StringTokenizer tokenizer = new StringTokenizer(games[i], "\t");
-			dialog.add(new JLabel(tokenizer.nextToken()));
-			dialog.add(new JLabel(tokenizer.nextToken()));
-			dialog.add(new JLabel(tokenizer.nextToken()));
+			dialog.add(new JLabel(tokenizer.nextToken(), SwingConstants.CENTER));
+			dialog.add(new JLabel(tokenizer.nextToken(), SwingConstants.CENTER));
+			dialog.add(new JLabel(tokenizer.nextToken(), SwingConstants.CENTER));
 		}
 		
 		JButton exit = new JButton("MENU");
@@ -101,7 +94,15 @@ public class Table {
 		dialog.setVisible(true);
 	}
 	
-	public void write(String toWrite) {
+	private String gamesString() {
+		String ans = "";
+		for (int i = 0; i < SIZE; i++) {
+			ans += (games[i] != null) ? games[i] + "\n" : "";
+		}
+		return ans;
+	}
+	
+	private void write(String toWrite) {
 		BufferedWriter out;
 		
 		try {
@@ -113,7 +114,7 @@ public class Table {
 		}
 	}
 	
-	public void read() {
+	private void read() {
 		BufferedReader in;
 		try {
 			in = new BufferedReader(new FileReader(fileName));

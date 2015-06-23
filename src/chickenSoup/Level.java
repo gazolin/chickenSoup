@@ -212,7 +212,6 @@ public class Level extends JFrame  {
 		case 6:
 			matrix = new ChickenMatrix(level6, this);
 			break;
-
 		default:
 			break;
 		}
@@ -236,14 +235,19 @@ public class Level extends JFrame  {
 		levelEnded = true;
 		
 		final JDialog dialog = new JDialog(this, "Level " + level  + " ended", true);
-		dialog.setSize(200,400);
+		dialog.setSize(200, 220);
 		dialog.setLayout(new BorderLayout());
+		
+		JLabel lvlScoreLabel = new JLabel("level score: " + finalScore, SwingConstants.CENTER);
+		lvlScoreLabel.setFont(lvlScoreLabel.getFont().deriveFont(20.0f));
+		JLabel totalScoreLabel = new JLabel("total score: " + totalScore, SwingConstants.CENTER);
+		totalScoreLabel.setFont(totalScoreLabel.getFont().deriveFont(22.0f));
 
 		JPanel panel = new JPanel(new GridLayout(4, 1));
 		panel.add(new JLabel("level time: " + time, SwingConstants.CENTER), BorderLayout.CENTER);
 		panel.add(new JLabel("level shots: " + shots, SwingConstants.CENTER), BorderLayout.CENTER);
-		panel.add(new JLabel("level score: " + finalScore, SwingConstants.CENTER), BorderLayout.CENTER);
-		panel.add(new JLabel("total score: " + totalScore, SwingConstants.CENTER), BorderLayout.CENTER);
+		panel.add(lvlScoreLabel, BorderLayout.CENTER);
+		panel.add(totalScoreLabel, BorderLayout.CENTER);
 
 		dialog.add(panel);
 		
