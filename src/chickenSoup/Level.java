@@ -10,10 +10,7 @@ import java.awt.event.KeyListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -76,8 +73,6 @@ public class Level extends JFrame  {
 	private ContinuousAudioDataStream loop;
 	private AudioData data = null;
 	
-
-
     public Level (int level, int totalScore, boolean mute) {
     	this.level = level;   
     	this.player = AudioPlayer.player;
@@ -102,7 +97,6 @@ public class Level extends JFrame  {
     	getContentPane().add(toolBar, BorderLayout.NORTH);
     	getContentPane().add(lvlPanel, BorderLayout.CENTER);
     	
-    
     	KeyListener listener = new KeyListener() {
 
     		@Override
@@ -195,7 +189,7 @@ public class Level extends JFrame  {
 		}
     }
     
-    public ChickenMatrix createChickenMatrix(int level) {
+    private ChickenMatrix createChickenMatrix(int level) {
     	ChickenMatrix matrix = null;
     	switch (level) {
 		case 1:
@@ -223,11 +217,7 @@ public class Level extends JFrame  {
     	
     	return matrix;	
     }
-    
-    public ChickenMatrix getMatrix() {
-    	return this.chicks;
-    }
-    
+
     public Shot getShot() {
     	return currShot;
     }
@@ -316,7 +306,7 @@ public class Level extends JFrame  {
 		isShot = false;
 	}
 	
-	public void playMusic() {
+	private void playMusic() {
 		if (mute)
 			return;
 		
@@ -332,7 +322,7 @@ public class Level extends JFrame  {
 		player.start(loop);
 	}
 	
-	public void stopMusic() {
+	private void stopMusic() {
 		player.stop(loop);
 	}
 

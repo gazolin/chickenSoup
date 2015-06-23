@@ -23,6 +23,7 @@ import chickens.RowChicken;
 import chickens.XorChicken;
 import chickens.YellowChicken;
 
+@SuppressWarnings("serial")
 public class ChickenMatrix extends JPanel  {
 	
 	private final int WIDTH = 8;

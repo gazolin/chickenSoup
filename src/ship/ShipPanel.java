@@ -1,18 +1,14 @@
 package ship;
 
-import java.awt.BorderLayout;
-import java.awt.Graphics;
-
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class ShipPanel extends JPanel {
 	
 	private SpaceShip ship;
 	
 	public ShipPanel(SpaceShip ship, int widthOfSky){
 		this.ship = ship;
-		
 		this.setLayout(null);
 		
 		add(ship.getLabel());
@@ -21,8 +17,6 @@ public class ShipPanel extends JPanel {
 		setOpaque(false);
     	setFocusable(true);
 		setVisible(true);
-	
-
 	}
 	
 	public SpaceShip getShip() {

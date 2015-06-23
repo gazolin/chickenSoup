@@ -12,7 +12,6 @@ import java.util.Set;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -30,21 +29,16 @@ public class ContentPanel extends JPanel implements ActionListener {
 
 	private Image img;
 	private ChickenMatrix chickens;
-	private ShipPanel shipPanel;
 	private JLabel shot;
 	private JLabel ship;
 	private Timer timer;
-	private int x, y;
 	private int distance;
 	private int shipLocation;
 	private Level level;
 	private ToolBar toolBar;
 
 	public ContentPanel(Image img, ChickenMatrix chickens, ShipPanel shipPanel, Level level, ToolBar toolBar) {
-		
-		
 		this.img = img;
-		this.shipPanel = shipPanel;
 		this.ship = shipPanel.getShip().getLabel();
 		this.distance = 0;
 		this.chickens = chickens;
@@ -62,8 +56,8 @@ public class ContentPanel extends JPanel implements ActionListener {
 		
 		setFocusable(true); 
 		
-
 	}
+	
 	public int getWidthOfSky() {
 		return img.getWidth(this);
 	}

@@ -9,7 +9,6 @@ import java.awt.event.MouseListener;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -89,17 +88,9 @@ public class ToolBar extends JPanel implements ActionListener {
 		return ans;		
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == timer) {
-			time++;
-			timeLabel.setText(time + "");
-		}
-	}
-	
-	public void initMute() {
+	private void initMute() {
 		ImageIcon muteImg = new ImageIcon("pictures//mute.png");
-		JLabel muteLabel = new JLabel();
+		muteLabel = new JLabel();
 		muteLabel.setIcon(muteImg);
 		muteLabel.setVisible(true);
 		
@@ -166,8 +157,8 @@ public class ToolBar extends JPanel implements ActionListener {
 	}
 	
 	public void setShot (int serial){
-		switch (serial){
-			
+		switch (serial) {
+
 		case 1:
 			blackIcon.setOpaque(true);
 			redIcon.setOpaque(false);
@@ -197,7 +188,14 @@ public class ToolBar extends JPanel implements ActionListener {
 		}
 
 		repaint();	
+	}
 	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == timer) {
+			time++;
+			timeLabel.setText(time + "");
+		}
 	}
 	
 }

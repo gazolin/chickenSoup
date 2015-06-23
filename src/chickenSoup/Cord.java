@@ -22,28 +22,6 @@ public class Cord {
 		return j;
 	}
 
-	public Cord getNextCord(Direction dir) {
-		switch (dir) {
-		case UP:
-			return new Cord(i - 1, j);
-		case DOWN:
-			return new Cord(i + 1, j);
-		case LEFT:
-			return new Cord(i, j - 1);
-		case RIGHT:
-			return new Cord(i, j + 1);
-		case UPLEFT:
-			return new Cord(i - 1, j - 1);
-		case UPRIGHT:
-			return new Cord(i - 1, j + 1);
-		case DOWNLEFT:
-			return new Cord(i + 1, j - 1);
-		case DOWNRIGHT:
-			return new Cord(i + 1, j + 1);
-		}
-		return null;
-	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Cord) {
