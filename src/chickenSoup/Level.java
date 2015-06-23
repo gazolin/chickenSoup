@@ -146,9 +146,7 @@ public class Level extends JFrame  {
     			    	currShot = new YellowShot();
     			    	shotType = 4;
     			    	toolBar.setShot(4);
-    			    }
-    		
-					
+    			    }		
     		}
     		
     		@Override
@@ -161,8 +159,7 @@ public class Level extends JFrame  {
     			
     	};
     	
-    	addKeyListener(listener);
-    	
+    	addKeyListener(listener);  	
     	pack();
     	 
 	    if(!initTrick) {
@@ -170,8 +167,7 @@ public class Level extends JFrame  {
 	    	curX = ship.getLabel().getX();
     		lvlPanel.shot(curX, shotType, false);
 	    }
-	    playMusic();
-		   
+	    playMusic();	   
     }
     
     public boolean isMute() {
@@ -250,8 +246,22 @@ public class Level extends JFrame  {
 			final JDialog nameDialog = new JDialog(this, "Enter your name", true);
 			
 			final JTextField playerName = new JTextField("Player");
+			playerName.setColumns(10);
+			
 			JButton menu = new JButton("BACK TO MENU");
 			final int scoreToTable = totalScore;
+			
+			JPanel dialogPanel = new JPanel();
+			dialogPanel.setLayout(new FlowLayout());
+			dialogPanel.add(new JLabel("Enter your name"));
+			dialogPanel.add(playerName);
+			
+			nameDialog.setSize(250,130);
+			nameDialog.setLayout(new FlowLayout());
+			nameDialog.add(dialogPanel);
+			nameDialog.add(menu);
+			nameDialog.setLocationRelativeTo(null);
+			
 			menu.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -261,24 +271,14 @@ public class Level extends JFrame  {
 				}
 			});
 			
-			nameDialog.setSize(200,200);
-			//nameDialog.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-			nameDialog.setLayout(new FlowLayout());
-			nameDialog.add(new JLabel("Enter your name"));
-			nameDialog.add(playerName);
-//			nameDialog.add(Box.createVerticalStrut(30));
-			nameDialog.add(menu);
-			
 			button.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					stopMusic();
 					dialog.dispose();
 					nameDialog.setVisible(true);
 				}
-			});
-			
-
-			
+			});					
 		}
 		else {
 			button.setText("NEXT LEVEL");
@@ -294,7 +294,6 @@ public class Level extends JFrame  {
 		}
 
 		dialog.add(button, BorderLayout.PAGE_END);
-
 		dialog.setLocationRelativeTo(null);
 		dialog.setVisible(true);
 		
@@ -302,7 +301,7 @@ public class Level extends JFrame  {
 		this.dispose();
 	}
   
-	public void resetIsShot(){
+	public void resetIsShot() {
 		isShot = false;
 	}
 	

@@ -97,7 +97,7 @@ public class Table {
 
 		}
 		
-		JButton exit = new JButton("EXIT");
+		JButton exit = new JButton("MENU");
 		exit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
