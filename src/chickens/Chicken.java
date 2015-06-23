@@ -1,37 +1,15 @@
 package chickens;
 
-import java.awt.Color;
-import java.awt.Dimension;
-
-//import javafx.scene.layout.Border;
-
-
-
-
-
-
-
-
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.sql.Time;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-import shots.ShotAnimation;
-import sun.audio.AudioData;
-import sun.audio.AudioDataStream;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
-import sun.audio.ContinuousAudioDataStream;
 import chickenSoup.ChickenMatrix;
 import chickenSoup.Cord;
+//import javafx.scene.layout.Border;
+import java.awt.event.ActionEvent;
 
 
 public abstract class Chicken implements Visitor, ActionListener {
@@ -70,16 +48,13 @@ public abstract class Chicken implements Visitor, ActionListener {
 	public void die() {	
 		this.label.setVisible(true);
 		this.label.setIcon(new ImageIcon("pictures//explosion.png"));
+		System.out.println(cord.toString() + " - " + kind + " has died");
 		timer = new Timer(10, this);
 		timer.start();
 		
 		this.matrix.reduceCount();
 		this.alive = false;
 		
-	}
-
-	public boolean checkForHit(JLabel shot) {
-		return false;
 	}
 	
 	public void actionPerformed(ActionEvent e) {

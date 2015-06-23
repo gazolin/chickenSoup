@@ -89,7 +89,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 		Chicken deadChicken = null;
 		for (Chicken chicken : optional) {
 
-			if((chicken.getLabel().getX() > shot.getX() -80 && chicken.getLabel().getX() < shot.getX() + 20)
+			if(chicken.isAlive() && (chicken.getLabel().getX() > shot.getX() -80 && chicken.getLabel().getX() < shot.getX() + 20)
 					&& (chicken.getLabel().getY() > shot.getY() - 20 )){
 				chicken.getLabel().getLocation(shot.getLocation());
 				hit = true;
