@@ -1,29 +1,27 @@
 package chickenSoup;
 
-import java.awt.BorderLayout;
+
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.AbstractButton;
+
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
+@SuppressWarnings("serial")
 public class GamePanel extends JPanel implements ActionListener{
 
 	private Image img;
@@ -31,21 +29,23 @@ public class GamePanel extends JPanel implements ActionListener{
 	private JSpinner spinner;
 	private JButton newGame;
 	private JButton table;
+	private JButton rules;
 	private Game game;
+	private boolean inGame;
 
 	
 	
 	public GamePanel(Image img, Game game){
-		
+	
 		this.img =img;
 		this.game = game;
+		this.inGame = true;
 		Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
 		setPreferredSize(size);
 		setMinimumSize(size);
 		setMaximumSize(size);
 		setSize(size);
-		
-		
+
 		logo = new JLabel();
 		logo.setIcon(new ImageIcon("pictures//logo.png"));
 	
@@ -58,11 +58,24 @@ public class GamePanel extends JPanel implements ActionListener{
 		newGame.addActionListener(this);
 		SpinnerNumberModel levelModel = new SpinnerNumberModel(1, 1, 6, 1);
 		spinner = new JSpinner(levelModel);
-	
+		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		add(logo);
 		logo.setAlignmentX(CENTER_ALIGNMENT);
+		add(Box.createVerticalStrut(50));
+		rules = new JButton();
+		rules.setIcon(new ImageIcon("pictures//RulesButtonPill1.png"));
+		rules.setBackground(Color.BLUE);
+		rules.addActionListener(this);
+		rules.setBorder(null);
+		rules.setOpaque(false);
+		rules.setAlignmentX(CENTER_ALIGNMENT);
+	
 		
+		newGame.setIcon(new ImageIcon("pictures//playnowgreen.png"));
+		newGame.addActionListener(this);
+
+		add(rules);
 		add(Box.createVerticalStrut(50));
 		
 		spinner.setMaximumSize(new Dimension(50, 50));
@@ -92,7 +105,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		
 		add(newGame);
 		
-		add(Box.createVerticalStrut(100));
+		add(Box.createVerticalStrut(50));
 		table.setAlignmentX(CENTER_ALIGNMENT);
 		add(table);
 		setVisible(true);
@@ -106,16 +119,23 @@ public class GamePanel extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(newGame)) {
-			int level = (Integer)spinner.getValue();
-			Level lvl1 = new Level(level, 0, false);
-			lvl1.setVisible(true);
-			lvl1.setLocationRelativeTo(null);
-			game.killMusic();
-			game.dispose();
+			if(inGame){
+				inGame = false;
+				int level = (Integer)spinner.getValue();
+				Level lvl1 = new Level(level, 0, false);
+				lvl1.setVisible(true);
+				lvl1.setLocationRelativeTo(null);
+				game.killMusic();
+				game.dispose();
+			}
 		}
 		
 		if (e.getSource().equals(table)) {
 			Table.table().showTable();
+		}
+		
+		if (e.getSource().equals(rules)) {
+			new Rules();
 		}
 	}
 	

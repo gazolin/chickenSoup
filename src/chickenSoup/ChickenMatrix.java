@@ -37,7 +37,6 @@ public class ChickenMatrix extends JPanel  {
 		this.level = level;
 		setLayout(new GridLayout(4, 8));
 		setOpaque(false);	
-		
 		Chicken chicken;
 		Cord cord;
 		Map<Integer, Chicken> row;

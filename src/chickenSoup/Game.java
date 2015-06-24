@@ -25,7 +25,7 @@ public class Game extends JFrame {
 	
 	
 	public Game() {
-		
+
 		this.player = AudioPlayer.player;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().add(new GamePanel(new ImageIcon("pictures//stars.gif").getImage(), this));	
