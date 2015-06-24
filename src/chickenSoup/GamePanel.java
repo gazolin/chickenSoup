@@ -110,6 +110,7 @@ public class GamePanel extends JPanel implements ActionListener{
 			Level lvl1 = new Level(level, 0, false);
 			lvl1.setVisible(true);
 			lvl1.setLocationRelativeTo(null);
+			game.killMusic();
 			game.dispose();
 		}
 		
