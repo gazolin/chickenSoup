@@ -58,7 +58,7 @@ public class Table {
 		read();
 		
 		final JDialog dialog = new JDialog();
-		dialog.setSize(290,310);
+		dialog.setSize(350,310);
 		dialog.setLayout(new GridLayout(7, 3));
 		
 		JLabel nameLabel = new JLabel("NAME", SwingConstants.CENTER);

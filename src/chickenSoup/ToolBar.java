@@ -68,7 +68,7 @@ public class ToolBar extends JPanel implements ActionListener {
 		initShots();
 		add(Box.createHorizontalStrut(50));
 		initMute();
-
+	
 	}
 	
 	public void increaseShots(boolean normal) {
