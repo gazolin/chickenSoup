@@ -37,6 +37,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 	private ToolBar toolBar;
 
 	public ContentPanel(Image img, ChickenMatrix chickens, ShipPanel shipPanel, Level level, ToolBar toolBar) {
+		
 		this.img = img;
 		this.ship = shipPanel.getShip().getLabel();
 		this.distance = 0;

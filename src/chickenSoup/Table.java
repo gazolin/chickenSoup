@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.StringTokenizer;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -60,7 +61,7 @@ public class Table {
 		final JDialog dialog = new JDialog();
 		dialog.setSize(350,310);
 		dialog.setLayout(new GridLayout(7, 3));
-		
+		dialog.setIconImage(new ImageIcon("pictures//flu.png").getImage());
 		JLabel nameLabel = new JLabel("NAME", SwingConstants.CENTER);
 		nameLabel.setFont(nameLabel.getFont().deriveFont(16.0f));
 		JLabel scoreLabel = new JLabel("SCORE", SwingConstants.CENTER);
