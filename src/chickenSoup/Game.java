@@ -1,14 +1,13 @@
 package chickenSoup;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.Timer;
+
 
 import sun.audio.AudioData;
 import sun.audio.AudioPlayer;
@@ -16,7 +15,7 @@ import sun.audio.AudioStream;
 import sun.audio.ContinuousAudioDataStream;
 
 @SuppressWarnings("serial")
-public class Game extends JFrame implements ActionListener {
+public class Game extends JFrame {
 	
 
 	private AudioPlayer player;
@@ -56,16 +55,6 @@ public class Game extends JFrame implements ActionListener {
 		player.stop(loop);
 		
 	}
-
-
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-
 	
 
 }
