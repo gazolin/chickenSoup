@@ -62,11 +62,11 @@ public class ToolBar extends JPanel implements ActionListener {
 		add(Box.createHorizontalStrut(100));
 		add(timeText);
 		add(timeLabel);
-		add(Box.createHorizontalStrut(150));
+		add(Box.createHorizontalStrut(120));
 		add(lvlName);
-		add(Box.createHorizontalStrut(170));
+		add(Box.createHorizontalStrut(120));
 		initShots();
-		add(Box.createHorizontalStrut(10));
+		add(Box.createHorizontalStrut(50));
 		initMute();
 
 	}
@@ -122,23 +122,23 @@ public class ToolBar extends JPanel implements ActionListener {
 		blueIcon = new JLabel();
 		yellowIcon = new JLabel();
 		
-		ImageIcon black = new ImageIcon("pictures//blackShot.png");
+		ImageIcon black = new ImageIcon("pictures//blackCircle.png");
 		blackIcon.setIcon(black);
 		blackIcon.setVisible(true);
 		blackIcon.setBackground(Color.MAGENTA);
 		blackIcon.setOpaque(true);
 		
-		ImageIcon red = new ImageIcon("pictures//redShot.png");
+		ImageIcon red = new ImageIcon("pictures//redCircle.png");
 		redIcon.setIcon(red);
 		redIcon.setBackground(Color.MAGENTA);
 		redIcon.setVisible(true);
 		
-		ImageIcon blue = new ImageIcon("pictures//blueShot.png");
+		ImageIcon blue = new ImageIcon("pictures//blueCircle.png");
 		blueIcon.setIcon(blue);
 		blueIcon.setBackground(Color.MAGENTA);
 		blueIcon.setVisible(true);
 		
-		ImageIcon yellow = new ImageIcon("pictures//yellowShot.png");
+		ImageIcon yellow = new ImageIcon("pictures//yellowCircle.png");
 		yellowIcon.setIcon(yellow);
 		yellowIcon.setBackground(Color.MAGENTA);
 		yellowIcon.setVisible(true);

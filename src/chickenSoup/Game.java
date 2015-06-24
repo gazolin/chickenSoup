@@ -1,71 +1,23 @@
 package chickenSoup;
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
 
 @SuppressWarnings("serial")
-public class Game extends JFrame implements ActionListener {
-	
-	private JButton newGame;
-	private JButton table;
-	private JSpinner spinner;
-	
-	
+public class Game extends JFrame {
+
 	public Game() {
-		super("Game");
+	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		newGame = new JButton("NEW GAME");
-		newGame.addActionListener(this);
-		
-		table = new JButton("TABLE");
-		table.addActionListener(this);
-		
-		SpinnerNumberModel levelModel = new SpinnerNumberModel(1, 1, 6, 1);
-		spinner = new JSpinner(levelModel);
-		JPanel tPane = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		tPane.setMaximumSize(new Dimension(250, 50));
-		tPane.setMinimumSize(new Dimension(250, 50));
-		tPane.setAlignmentX(Component.CENTER_ALIGNMENT);
-		JLabel label = new JLabel("Level:");
-		tPane.add(label);
-		tPane.add(spinner);
-		tPane.add(newGame);
-		
-		getContentPane().setLayout(new GridLayout(2, 1));
-		getContentPane().add(tPane);
-		getContentPane().add(table);
-		
+		getContentPane().add(new GamePanel(new ImageIcon("pictures//stars.gif").getImage(), this));	
 		setVisible(true);
 		pack();
 		setLocationRelativeTo(null);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource().equals(newGame)) {
-			int level = (Integer)spinner.getValue();
-			Level lvl1 = new Level(level, 0, false);
-			lvl1.setVisible(true);
-			lvl1.setLocationRelativeTo(null);
-			this.dispose();
-		}
-		
-		if (e.getSource().equals(table)) {
-			Table.table().showTable();
-		}
-	}
+
+	
+
 }
 	
 	
