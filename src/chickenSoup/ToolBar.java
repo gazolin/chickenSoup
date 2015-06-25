@@ -26,7 +26,7 @@ public class ToolBar extends JPanel implements ActionListener {
 	private JLabel timeText;
 	private JLabel lvlName;
 	private JLabel muteLabel;
-
+	private JLabel backToButton;
 	private int shots;
 	private int time;
 	private Timer timer;	
@@ -60,7 +60,9 @@ public class ToolBar extends JPanel implements ActionListener {
 		add(timeLabel);
 		add(Box.createHorizontalStrut(115));
 		initShots();
-		add(Box.createHorizontalStrut(250));
+		add(Box.createHorizontalStrut(100));
+		initBackTo();
+		add(Box.createHorizontalStrut(100));
 		initMute();
 	
 	}
@@ -108,6 +110,35 @@ public class ToolBar extends JPanel implements ActionListener {
 		});
 			
 		add(muteLabel);
+	}
+	
+	private void initBackTo(){
+		ImageIcon backTo = new ImageIcon("pictures//backTo.png");
+		backToButton = new JLabel();
+		backToButton.setIcon(backTo);
+		backToButton.setVisible(true);
+		backToButton.addMouseListener(new MouseListener() {			
+			@Override
+			public void mouseReleased(MouseEvent e) {}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				new Game();
+				level.stopMusic();
+				level.dispose();
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {}
+		});
+		add(backToButton);
 	}
 	
 	private void initShots(){

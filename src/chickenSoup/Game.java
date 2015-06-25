@@ -26,6 +26,7 @@ public class Game extends JFrame {
 	
 	public Game() {
 		
+		setResizable(false);
 		setIconImage(new ImageIcon("pictures//flu.png").getImage());
 		this.player = AudioPlayer.player;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
