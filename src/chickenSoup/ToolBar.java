@@ -33,12 +33,8 @@ public class ToolBar extends JPanel implements ActionListener {
 	private Level level;
 	
 	public ToolBar(Level lvl) {
-		
 		this.level = lvl;
 
-		lvlName = new JLabel("Level: " + lvl.getLevel());
-		lvlName.setFont(lvlName.getFont().deriveFont(22.0f));
-		
 		shotsText = new JLabel("Shots: ");
 		shotsText.setFont(shotsText.getFont().deriveFont(22.0f));
 		
@@ -59,14 +55,12 @@ public class ToolBar extends JPanel implements ActionListener {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		add(shotsText);
 		add(shotsLabel);
-		add(Box.createHorizontalStrut(100));
+		add(Box.createHorizontalStrut(50));
 		add(timeText);
 		add(timeLabel);
-		add(Box.createHorizontalStrut(120));
-		add(lvlName);
-		add(Box.createHorizontalStrut(120));
+		add(Box.createHorizontalStrut(115));
 		initShots();
-		add(Box.createHorizontalStrut(50));
+		add(Box.createHorizontalStrut(250));
 		initMute();
 	
 	}

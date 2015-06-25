@@ -75,6 +75,8 @@ public class Level extends JFrame  {
 	private AudioData data = null;
 	
     public Level (int level, int totalScore, boolean mute) {
+    	setTitle("Level: " + level);
+    	setIconImage(new ImageIcon("pictures//flu.png").getImage());
     	this.level = level;   
     	this.player = AudioPlayer.player;
     	this.initTrick = false;

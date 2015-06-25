@@ -1,5 +1,6 @@
 package chickenSoup;
 
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -55,6 +56,7 @@ public class ChickenMatrix extends JPanel  {
 			allChickens.put(i,row);
 		}
 	}
+
 	
 	public Chicken createTheChiken (int kind, Cord cord) {
 		Chicken chicken = null;
