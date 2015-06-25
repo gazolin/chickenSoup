@@ -64,6 +64,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 
 	public void paintComponent(Graphics g) {
 		g.drawImage(img, 0, 0, null);
+	
 	}
 
 	public void shot(int x, int type, boolean normal) {
