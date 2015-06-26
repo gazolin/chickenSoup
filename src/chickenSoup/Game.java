@@ -9,6 +9,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 
+
+import panelParts.GamePanel;
 import sun.audio.AudioData;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;

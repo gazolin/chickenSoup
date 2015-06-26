@@ -1,12 +1,12 @@
-package chickenSoup;
+package panelParts;
 
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class RulesPanel extends JPanel {
 	
 	private Image img;
@@ -19,11 +19,9 @@ public class RulesPanel extends JPanel {
 		setMinimumSize(size);
 		setMaximumSize(size);
 		setSize(size);
-		setVisible(true);
-		
+		setVisible(true);		
 	}
-	
-	
+		
 	public void paintComponent(Graphics g) {
 		g.drawImage(img, 0, 0, null);
 	}

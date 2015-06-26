@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import panelParts.ContentPanel;
+import panelParts.ToolBar;
 import ship.ShipPanel;
 import ship.SpaceShip;
 import shots.BlackShot;

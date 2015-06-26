@@ -1,4 +1,4 @@
-package chickenSoup;
+package panelParts;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -21,6 +21,8 @@ import sun.audio.AudioData;
 import sun.audio.AudioDataStream;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
+import chickenSoup.ChickenMatrix;
+import chickenSoup.Level;
 import chickens.Chicken;
 
 @SuppressWarnings("serial")
@@ -54,8 +56,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 		add(Box.createVerticalStrut(250));
 		add(shipPanel);
 		
-		setFocusable(true); 
-		
+		setFocusable(true); 	
 	}
 	
 	public int getWidthOfSky() {

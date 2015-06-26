@@ -1,6 +1,5 @@
 package chickenSoup;
 
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.util.HashMap;
 import java.util.HashSet;

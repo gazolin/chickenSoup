@@ -1,4 +1,4 @@
-package chickenSoup;
+package panelParts;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -13,6 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import chickenSoup.Game;
+import chickenSoup.Level;
+
 @SuppressWarnings("serial")
 public class ToolBar extends JPanel implements ActionListener {
 	
@@ -24,7 +27,6 @@ public class ToolBar extends JPanel implements ActionListener {
 	private JLabel yellowIcon;
 	private JLabel timeLabel;
 	private JLabel timeText;
-	private JLabel lvlName;
 	private JLabel muteLabel;
 	private JLabel backToButton;
 	private int shots;
@@ -64,7 +66,6 @@ public class ToolBar extends JPanel implements ActionListener {
 		initBackTo();
 		add(Box.createHorizontalStrut(100));
 		initMute();
-	
 	}
 	
 	public void increaseShots(boolean normal) {

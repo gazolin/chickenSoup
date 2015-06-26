@@ -1,8 +1,9 @@
-package chickenSoup;
+package panelParts;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
+@SuppressWarnings("serial")
 public class Rules extends JFrame {
 	
 	public Rules(){

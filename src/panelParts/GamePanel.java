@@ -1,4 +1,4 @@
-package chickenSoup;
+package panelParts;
 
 
 import java.awt.Color;
@@ -8,6 +8,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 
 
@@ -21,6 +22,10 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
+import chickenSoup.Game;
+import chickenSoup.Level;
+import chickenSoup.Table;
+
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel implements ActionListener{
 
@@ -33,8 +38,6 @@ public class GamePanel extends JPanel implements ActionListener{
 	private Game game;
 	private boolean inGame;
 
-	
-	
 	public GamePanel(Image img, Game game){
 	
 		this.img =img;
@@ -70,8 +73,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		rules.setBorder(null);
 		rules.setOpaque(false);
 		rules.setAlignmentX(CENTER_ALIGNMENT);
-	
-		
+			
 		newGame.setIcon(new ImageIcon("pictures//playnowgreen.png"));
 		newGame.addActionListener(this);
 
@@ -108,8 +110,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		add(Box.createVerticalStrut(50));
 		table.setAlignmentX(CENTER_ALIGNMENT);
 		add(table);
-		setVisible(true);
-	
+		setVisible(true);	
 	}
 	
 	public void paintComponent(Graphics g) {
